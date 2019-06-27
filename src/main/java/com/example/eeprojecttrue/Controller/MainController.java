@@ -11,5 +11,14 @@ public class MainController  {
         return "index";
     }
 
+    @RequestMapping(value = "/index.html")
+    public String getIndexHtml() {
+        return "index";
+    }
+
+    @RequestMapping(value = "/aboutus.html")
+    public String getAboutus() {
+        return "aboutus";
+    }
 
 }

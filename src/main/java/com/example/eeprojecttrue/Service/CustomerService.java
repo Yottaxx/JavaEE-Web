@@ -16,7 +16,12 @@ public class CustomerService  {
     public boolean Save(Customer customer)
     {
         Customer customer1=customerRepository.findByEmail(customer.getEmail());
-        if( customer1.getName() == null || customer1==null) {
+        if(customer1==null)
+        {
+            customerRepository.save(customer);
+            return true;
+        }
+        if( customer1.getName() == null) {
             customerRepository.save(customer);
             return true;
         }

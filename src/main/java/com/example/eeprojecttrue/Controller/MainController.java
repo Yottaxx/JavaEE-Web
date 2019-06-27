@@ -21,4 +21,8 @@ public class MainController  {
         return "aboutus";
     }
 
+    @RequestMapping(value = "/over")
+    public String test() {
+        return "index";
+    }
 }

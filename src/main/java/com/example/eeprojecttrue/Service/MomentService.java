@@ -2,7 +2,9 @@ package com.example.eeprojecttrue.Service;
 
 import com.example.eeprojecttrue.Entity.Moment;
 import com.example.eeprojecttrue.Repository.MomentRepository;
+import net.bytebuddy.TypeCache;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,18 +15,18 @@ public class MomentService {
     @Autowired
     private  MomentRepository momentRepository;
 
-    List<Moment> findById(int id)
+    public Moment findById(int id)
     {
         return momentRepository.findById(id);
     }
-    List<Moment> findByDate(String date){
+    public List<Moment> findByDate(String date){
         return momentRepository.findByDate(date);
     }
-    List<Moment> findAll()
+    public List<Moment> findAll()
     {
         return momentRepository.findAll();
     }
-    List<Moment> findByCustomerId(int customer_id)
+    public List<Moment> findByCustomerId(int customer_id)
     {
         return momentRepository.findByCustomerId(customer_id);
     }
@@ -38,5 +40,10 @@ public class MomentService {
         }
         else
             return false;
+    }
+
+    public List<Moment> GetByDate()
+    {
+        return momentRepository.findBySortDate();
     }
 }

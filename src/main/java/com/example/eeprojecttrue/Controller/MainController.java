@@ -22,7 +22,10 @@ public class MainController  {
     public String getIndex(Model model,HttpSession httpSession) {
         Customer customer= (Customer) httpSession.getAttribute("customer");
         customer=customerService.findByEmail(customer.getEmail());
-        model.addAttribute("user",customer.getName());
+        if(customer.getName()!=null)
+            model.addAttribute("user",customer.getName());
+        else
+            model.addAttribute("user","PLEASE LOGIN");
         return "index";
     }
 
@@ -35,7 +38,10 @@ public class MainController  {
     public String getIndexHtml(Model model,HttpSession httpSession) {
         Customer customer= (Customer) httpSession.getAttribute("customer");
         customer=customerService.findByEmail(customer.getEmail());
-        model.addAttribute("user",customer.getName());
+        if(customer.getName()!=null)
+            model.addAttribute("user",customer.getName());
+        else
+            model.addAttribute("user","PLEASE LOGIN");
         return "index";
     }
 

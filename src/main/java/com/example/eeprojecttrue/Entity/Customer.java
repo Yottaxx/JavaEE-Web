@@ -21,7 +21,7 @@ public class Customer {
 //        this.password = password;
 //    }
 
-    @OneToMany(mappedBy = "Moment",cascade=CascadeType.ALL,fetch = FetchType.LAZY)//People是关系的维护端，当删除 people，会级联删除
+    @OneToMany(mappedBy = "customer",cascade=CascadeType.ALL,fetch = FetchType.LAZY)//People是关系的维护端，当删除 people，会级联删除
     // address
     private List<Moment> moments;//地址
 

@@ -23,7 +23,7 @@ public class LoginController {
         HttpSession session=request.getSession();
         if(customerService.Login(customer)) {
             session.setAttribute("customer",customer);
-            return "index";
+            return "redirect:/index";
         }else
             return "signup";
     }

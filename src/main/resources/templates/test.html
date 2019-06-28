@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,6 +29,7 @@
     <title>Title</title>
 </head>
 <body>
+<p th:text="'hello, ' + ${post} + '!'"></p>
 <div class="col-md-4 col-sm-12">
     <div class="contact-form bottom">
         <form action="/register" method="post">

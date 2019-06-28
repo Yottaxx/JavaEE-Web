@@ -1,5 +1,6 @@
 package com.example.eeprojecttrue.Interceptor;
 
+import com.example.eeprojecttrue.Entity.Customer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
@@ -17,6 +18,8 @@ public class SecurityInterceptor extends HandlerInterceptorAdapter {
 
 //            判断是否已有该用户登录的session
         if(session.getAttribute("customer") != null){
+            Customer customer= (Customer) session.getAttribute("customer");
+            System.out.println(customer.getName()+" "+customer.getPassword());
             return true;
         }
 

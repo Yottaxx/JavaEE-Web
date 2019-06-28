@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -115,7 +115,8 @@
                     <h1>重大幼儿园</h1>
                     <p>Boudin doner frankfurter pig. Cow shank bresaola pork loin tri-tip tongue venison pork belly
                         meatloaf short loin landjaeger biltong beef ribs shankle chicken andouille.</p>
-                    <a href="/signup" class="btn btn-common">SIGN UP</a>
+                    <!--<a href="/signup" class="btn btn-common">SIGN UP</a>-->
+                    <p class="btn btn-common" th:text="'hello, ' + ${user} + '!'"></p>
                 </div>
                 <img src="/images/home/slider/hill.png" class="slider-hill" alt="slider image">
                 <img src="/images/home/slider/house.png" class="slider-house" alt="slider image">

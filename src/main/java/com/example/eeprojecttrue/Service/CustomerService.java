@@ -33,9 +33,26 @@ public class CustomerService  {
     {
         if(customerRepository.findByEmail(customer.getEmail())==null)
             return false;
-        Customer customer1=customerRepository.findByEmail(customer.getEmail());
-        return customer1.getPassword().equals(customer.getPassword());
+        customer=customerRepository.findByEmail(customer.getEmail());
+        return customer.getPassword().equals(customer.getPassword());
     }
 
+    public List<Customer> findByName(String name)
+    {
+       return customerRepository.findByName(name);
+    }
+    public Customer findByEmail(String email)
+    {
+       return customerRepository.findByEmail(email);
+    }
+    public Customer findById(int id)
+    {
+        return customerRepository.findById(id);
+    }
+
+    public List<Customer> findAll()
+    {
+        return customerRepository.findAll();
+    }
 
 }

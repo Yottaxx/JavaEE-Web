@@ -65,7 +65,7 @@ public class MainController  {
         return "portfolio";
     }
 
-    @RequestMapping(value = " /portfolio.html")
+    @RequestMapping(value = "/portfolio.html")
     public String GetPortfolioHtml() {
         return "portfolio";
     }
@@ -88,4 +88,6 @@ public class MainController  {
        model.addAttribute("post","sdfsdf");
        return "test";
     }
+
+
 }

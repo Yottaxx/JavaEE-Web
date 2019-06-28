@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 @Controller
 public class RegisterController {
 
@@ -15,12 +18,15 @@ public class RegisterController {
     private CustomerService customerService;
 
     @PostMapping(value = "/register")
-    public String newUser(Customer customer)
+    public String newUser(Customer customer, HttpServletRequest request)
     {
         System.out.println("post");
-        if(customerService.Save(customer))
+        if(customerService.Save(customer)) {
+            HttpSession session=request.getSession();
+            session.setAttribute("customer",customer);
             return "index";
-        else
+
+        }else
             return "aboutus";
     }
 
@@ -28,13 +34,6 @@ public class RegisterController {
     public String newUser2(Customer customer)
     {
         System.out.println("get");
-        if(customerService.Save(customer)) {
-            System.out.println("in");
-            return "index";
-        }else
-        {
-            System.out.println("out");
-            return "aboutus";
-        }
+       return "signup";
     }
 }

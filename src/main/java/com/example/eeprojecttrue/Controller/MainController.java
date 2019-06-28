@@ -45,7 +45,18 @@ public class MainController  {
     }
 
     @RequestMapping(value = "/portfolio")
-    public String portfolio() {
+    public String GetPortfolio() {
         return "portfolio";
+    }
+
+
+    @RequestMapping(value = "/blogdetails")
+    public String GetBlogdetails() {
+        return "blogdetails";
+    }
+
+    @RequestMapping(value = "/pricing")
+    public String GetPricing() {
+        return "pricing";
     }
 }

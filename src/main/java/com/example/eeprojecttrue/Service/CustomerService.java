@@ -31,6 +31,8 @@ public class CustomerService  {
 
     public boolean Login(Customer customer)
     {
+        if(customerRepository.findByEmail(customer.getEmail())==null)
+            return false;
         Customer customer1=customerRepository.findByEmail(customer.getEmail());
         return customer1.getPassword().equals(customer.getPassword());
     }

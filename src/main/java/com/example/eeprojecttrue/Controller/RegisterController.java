@@ -24,7 +24,7 @@ public class RegisterController {
         if(customerService.Save(customer)) {
             HttpSession session=request.getSession();
             session.setAttribute("customer",customer);
-            return "index";
+            return "redirect:/index";
 
         }else
             return "aboutus";

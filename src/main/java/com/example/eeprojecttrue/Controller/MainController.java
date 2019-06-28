@@ -65,6 +65,11 @@ public class MainController  {
         return "portfolio";
     }
 
+    @RequestMapping(value = " /portfolio.html")
+    public String GetPortfolioHtml() {
+        return "portfolio";
+    }
+
 
     @RequestMapping(value = "/blogdetails")
     public String GetBlogdetails() {

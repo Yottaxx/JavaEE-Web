@@ -1,29 +1,29 @@
 package com.example.eeprojecttrue.Entity;
 
+import org.springframework.stereotype.Component;
+
 import javax.persistence.*;
 import java.util.Date;
 
+
 @Entity
-@Table(name = "Moment")
-public class Moment {
+@Table(name = "C_M")
+public class C_M  {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String content;
     private Date date;
     private String title;
+    private String name;
 
-    public String getTitle() {
-        return title;
+    public C_M(Customer customer,Moment moment)
+    {
+       this.id=moment.getId();
+       this.content=moment.getContent();
+       this.title=moment.getTitle();
+       this.name=customer.getName();
+       this.date=moment.getDate();
     }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    @JoinColumn(name = "customer_id")
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Customer customer;
 
     public Integer getId() {
         return id;
@@ -49,11 +49,19 @@ public class Moment {
         this.date = date;
     }
 
-    public Customer getCustomer() {
-        return customer;
+    public String getTitle() {
+        return title;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

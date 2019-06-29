@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -46,4 +47,9 @@ public class MomentService {
     {
         return momentRepository.findBySortDate();
     }
+
+//    public List<Moment> findByDateStartsWith(Date date)
+//    {
+//        return momentRepository.findByDateStartsWith(date);
+//    }
 }

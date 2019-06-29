@@ -114,7 +114,7 @@
                 <div class="action">
                     <div class="col-sm-12">
                         <h1 class="title">杂货铺</h1>
-                        <a href="newmoment">新唠叨</a>
+                        <a href="/newmoment">新唠叨</a>
                     </div>
                 </div>
             </div>
@@ -209,11 +209,14 @@
                                         <a href="#" class="read-more">View More</a>
                                         <div class="post-bottom clearfix">
                                             <ul class="nav navbar-nav post-nav">
-                                                <li><a href="/Moment/get?id=1"><i
+                                                <li><a th::href="@{'/Moment/get?id='+${item2.id}}"><i
                                                         class="fa fa-tag"></i>Creative
                                                 </a></li>
-                                                <li><a href="/Moment/return/${{item2.id}}"><i class="fa fa-heart"></i>32 Love</a></li>
-                                                <li><a href="/Moment/return/'${{item2.id}}'"><i class="fa fa-comments"></i>3 Comments</a></li>
+                                                <li><a th::href="@{'/Moment/get?id='+${{item2.id}}}"><i
+                                                        class="fa fa-heart"></i>32 Love</a></li>
+                                                <li><a href="/Moment/return/{item2.id}"
+                                                       th::text="${{item2.id}}"><i
+                                                        class="fa fa-comments"></i>3 Comments</a></li>
                                             </ul>
                                         </div>
                                     </div>

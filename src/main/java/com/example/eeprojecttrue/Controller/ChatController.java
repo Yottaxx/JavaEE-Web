@@ -26,14 +26,14 @@ public class ChatController {
     @Autowired
     private CustomerService customerService;
     @GetMapping(value = {"/blogthree.html"})
-    public String ChatHtml(HttpSession session){
-        Customer customer= (Customer) session.getAttribute("customer");
-
+    public String ChatHtml(HttpSession session,Model model){
+        ReMoment(-1,model);
         return "blogthree";
     }
 
     @GetMapping(value = {"/blogthree"})
-    public String Chat(HttpSession session){
+    public String Chat(HttpSession session,Model model){
+        ReMoment(-1,model);
         return "blogthree";
     }
 
@@ -75,30 +75,40 @@ public class ChatController {
     }
 
     @GetMapping(value = "/newmoment/day")
-    public String NewMomentsDay(Model model)
+    public String NewMomentsDay(Model model,HttpSession httpSession)
     {
-        ReMoment(-1,model);
-        return "/blogthree";
+        Integer num=-1;
+        httpSession.setAttribute("time",num);
+        return "redirect:/chat";
     }
 
     @GetMapping(value = "/newmoment/week")
-    public String NewMomentsWeek(Model model)
+    public String NewMomentsWeek(Model model,HttpSession httpSession)
     {
-        ReMoment(-7,model);
-        return "/blogthree";
+        Integer num=-7;
+        httpSession.setAttribute("time",num);
+        return "redirect:/chat";
     }
 
     @GetMapping(value = "/newmoment/month")
-    public String NewMomentsMonth(Model model)
+    public String NewMomentsMonth(Model model,HttpSession httpSession)
     {
         Date date=new Date();
         Calendar now=Calendar.getInstance();
         now.setTime(date);
         int maxDate = 0-now.get(Calendar.DATE);
-        ReMoment(maxDate,model);
-        return "/blogthree";
+        Integer num=maxDate;
+        httpSession.setAttribute("time",maxDate);
+        return "redirect:/chat";
     }
 
+    @GetMapping(value = "/chat")
+    public String Char_Main(Model model,HttpSession httpSession) {
+
+        int a= (int) httpSession.getAttribute("time");
+        ReMoment(a,model);
+        return "/blogthree";
+    }
 
     private void ReMoment(int time, Model model)
     {

@@ -209,14 +209,25 @@
                                         <a href="#" class="read-more">View More</a>
                                         <div class="post-bottom clearfix">
                                             <ul class="nav navbar-nav post-nav">
-                                                <li><a th::href="@{'/Moment/get?id='+${item2.id}}"><i
-                                                        class="fa fa-tag"></i>Creative
-                                                </a></li>
-                                                <li><a th::href="@{'/Moment/get?id='+${{item2.id}}}"><i
-                                                        class="fa fa-heart"></i>32 Love</a></li>
-                                                <li><a href="/Moment/return/{item2.id}"
-                                                       th::text="${{item2.id}}"><i
-                                                        class="fa fa-comments"></i>3 Comments</a></li>
+                                                <li>
+                                                    <a th:href="@{/Moment/get(id=${{item2.id}})}">
+                                                    <i class="fa fa-tag"></i>
+                                                    <span class="post-author" th:text="${{item2.date}}">
+                                                    </span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a th:href="@{/Moment/get(id=${{item2.id}})}"><i class="fa fa-heart"></i>
+                                                    <span class="post-author" th:text="${{item2.date}}">
+                                                    </span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a th:href="@{/Moment/get(id=${{item2.id}})}" ><i class="fa fa-comments"></i>
+                                                    <span class="post-author" th:text="${{item2.date}}">
+                                                    </span>
+                                                    </a>
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
@@ -283,9 +294,9 @@
                 <div class="blog-pagination">
                     <ul class="pagination">
                         <li><a href="#">left</a></li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li class="active"><a href="#">3</a></li>
+                        <li><a th:href="@{/Moment/page/0}">1</a></li>
+                        <li><a th:href="@{/Moment/page/1}">2</a></li>
+                        <li class="active"><a th:href="@{/Moment/page/2}">3</a></li>
                         <li><a href="#">4</a></li>
                         <li><a href="#">5</a></li>
                         <li><a href="#">6</a></li>

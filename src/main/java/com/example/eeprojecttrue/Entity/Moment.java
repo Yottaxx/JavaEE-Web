@@ -12,6 +12,15 @@ public class Moment {
     private String content;
     private Date date;
     private String title;
+    private String tag;
+
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
 
     public String getTitle() {
         return title;

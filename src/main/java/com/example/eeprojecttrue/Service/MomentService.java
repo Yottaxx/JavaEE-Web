@@ -2,12 +2,13 @@ package com.example.eeprojecttrue.Service;
 
 import com.example.eeprojecttrue.Entity.Moment;
 import com.example.eeprojecttrue.Repository.MomentRepository;
-import net.bytebuddy.TypeCache;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -48,6 +49,15 @@ public class MomentService {
         return momentRepository.findBySortDate();
     }
 
+
+    public List<Moment> GetByDate(int nums,int pages)
+    {
+
+        Pageable pageable =  new PageRequest(pages,nums, Sort.Direction.DESC,"date");
+        Page<Moment> page = momentRepository.findAll(pageable);
+        List<Moment> list=page.getContent();
+        return list;
+    }
 //    public List<Moment> findByDateStartsWith(Date date)
 //    {
 //        return momentRepository.findByDateStartsWith(date);

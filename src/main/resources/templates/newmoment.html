@@ -161,10 +161,17 @@
                 <div class="contact-form bottom">
                     <h2>Send a message</h2>
                     <form action="/newmoment" method="post">
-                        主题:<input name="title" class="form-control"/><br/>
-                        内容: <label>
+                        <a>标题</a><input name="title" class="form-control"/><br/>
+                        <a>内容</a> <label>
                         <textarea name="content" class="form-control" rows="8"></textarea>
-                    </label><br/>
+                        </label><br/>
+                        <a>标签</a>
+                            <input type="radio" name="tag" value="kaixin">开心</label>
+                            <input type="radio" name="tag" value="qiushi">糗事</label>
+                            <input type="radio" name="tag" value="yumen">郁闷</label>
+                            <input type="radio" name="tag" value="xingfu">幸福</label>
+                            <input type="radio" name="tag" value="mengxiang">梦想</label>
+                            <input type="radio" name="tag" value="weilai">未来</label> <br/>
                         <input type="submit" value="注册" class="form-control"/>
                     </form>
                 </div>

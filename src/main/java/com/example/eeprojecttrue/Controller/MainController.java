@@ -85,7 +85,7 @@ public class MainController  {
     @RequestMapping(value = "/tttest",method = RequestMethod.GET)
     public String newUser2(Model model)
     {
-       model.addAttribute("post","sdfsdf");
+       model.addAttribute("post",1);
        return "test";
     }
 

@@ -27,13 +27,13 @@ public class ChatController {
     private CustomerService customerService;
     @GetMapping(value = {"/blogthree.html"})
     public String ChatHtml(HttpSession session,Model model){
-        ReMoment(-1,model);
+        ReMoment(-1,model,0);
         return "blogthree";
     }
 
     @GetMapping(value = {"/blogthree"})
     public String Chat(HttpSession session,Model model){
-        ReMoment(-1,model);
+        ReMoment(-1,model,0);
         return "blogthree";
     }
 
@@ -50,7 +50,7 @@ public class ChatController {
             moment= (Moment) momentService.findById(moment.getId());
             customerService.addMoments(customer,moment);
 
-            List<Moment> list=momentService.GetByDate();
+            List<Moment> list=momentService.GetByDate(10,0);
           //  List<Moment> list=momentService.findByDateStartsWith(new Date());
 
             C_M []c_ms=new C_M[list.size()];
@@ -79,6 +79,7 @@ public class ChatController {
     {
         Integer num=-1;
         httpSession.setAttribute("time",num);
+        httpSession.setAttribute("page",0);
         return "redirect:/chat";
     }
 
@@ -87,6 +88,7 @@ public class ChatController {
     {
         Integer num=-7;
         httpSession.setAttribute("time",num);
+        httpSession.setAttribute("page",0);
         return "redirect:/chat";
     }
 
@@ -99,6 +101,7 @@ public class ChatController {
         int maxDate = 0-now.get(Calendar.DATE);
         Integer num=maxDate;
         httpSession.setAttribute("time",maxDate);
+        httpSession.setAttribute("page",0);
         return "redirect:/chat";
     }
 
@@ -106,17 +109,18 @@ public class ChatController {
     public String Char_Main(Model model,HttpSession httpSession) {
 
         int a= (int) httpSession.getAttribute("time");
-        ReMoment(a,model);
+        int pages=(int) httpSession.getAttribute("page");
+        ReMoment(a,model,pages);
         return "/blogthree";
     }
 
-    private void ReMoment(int time, Model model)
+    private void ReMoment(int time, Model model,int pages)
     {
         Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.DATE, time); //得到前一天
         Date date1 = calendar.getTime();
 
-        List<Moment> list=momentService.GetByDate();
+        List<Moment> list=momentService.GetByDate(10,pages);
         //  List<Moment> list=momentService.findByDateStartsWith(new Date());
 
         C_M []c_ms=new C_M[list.size()];
@@ -140,9 +144,17 @@ public class ChatController {
     }
 
     @GetMapping(value = "/Moment/get")
-    public String MomentOperation_type2(int id)
+    public String MomentOperation_type2( int id)
     {
         Moment moment=momentService.findById(id);
         return "index";
+    }
+
+    @GetMapping(value = "/Moment/page/{page}")
+    public String MomentOperation_type2(@PathVariable("page") int page, HttpSession httpSession)
+    {
+        httpSession.setAttribute("time",-1);
+        httpSession.setAttribute("page",page);
+        return "redirect:/chat";
     }
 }

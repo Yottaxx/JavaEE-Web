@@ -160,18 +160,19 @@
             <div class="col-md-4 col-sm-12">
                 <div class="contact-form bottom">
                     <h2>Send a message</h2>
-                    <form action="/newmoment" method="post">
+                    <form action="/newmoment" method="post" enctype="multipart/form-data">
                         <a>标题</a><input name="title" class="form-control"/><br/>
                         <a>内容</a> <label>
                         <textarea name="content" class="form-control" rows="8"></textarea>
                         </label><br/>
                         <a>标签</a>
-                            <input type="radio" name="tag" value="kaixin">开心</label>
-                            <input type="radio" name="tag" value="qiushi">糗事</label>
-                            <input type="radio" name="tag" value="yumen">郁闷</label>
-                            <input type="radio" name="tag" value="xingfu">幸福</label>
-                            <input type="radio" name="tag" value="mengxiang">梦想</label>
-                            <input type="radio" name="tag" value="weilai">未来</label> <br/>
+                            <input type="radio" name="tag" value="开心">开心</label>
+                            <input type="radio" name="tag" value="糗事">糗事</label>
+                            <input type="radio" name="tag" value="郁闷">郁闷</label>
+                            <input type="radio" name="tag" value="幸福">幸福</label>
+                            <input type="radio" name="tag" value="梦想">梦想</label>
+                            <input type="radio" name="tag" value="未来">未来</label> <br/>
+                        <input type="file" name="logo" class="form-control"/><br/>
                         <input type="submit" value="注册" class="form-control"/>
                     </form>
                 </div>

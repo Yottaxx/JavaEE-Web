@@ -1,6 +1,9 @@
 package com.example.eeprojecttrue.Entity;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import javax.persistence.*;
+import java.io.IOException;
 import java.util.List;
 
 @Entity
@@ -13,6 +16,23 @@ public class Customer {
     private String email;
     private String password;
     private String role="user";
+    @Lob
+    @Basic(fetch = FetchType.LAZY)
+    @Column(name=" logo", columnDefinition="longblob", nullable=true)
+    private byte[] Logo;
+
+    public byte[] getLogo() {
+        return Logo;
+    }
+
+    public void setLogo(MultipartFile multipartFile)
+    {
+        try {
+            Logo=multipartFile.getBytes();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 
 //    public Customer(String name, String email, String password) {
@@ -72,4 +92,6 @@ public class Customer {
     public void setRole(String role) {
         this.role = role;
     }
+
+
 }

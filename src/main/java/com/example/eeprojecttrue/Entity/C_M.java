@@ -15,7 +15,8 @@ public class C_M  {
     private Date date;
     private String title;
     private String name;
-
+    private Integer customer_id;
+    private String tag;
     public C_M(Customer customer,Moment moment)
     {
        this.id=moment.getId();
@@ -23,6 +24,24 @@ public class C_M  {
        this.title=moment.getTitle();
        this.name=customer.getName();
        this.date=moment.getDate();
+       this.customer_id=customer.getId();
+       this.tag=moment.getTag();
+    }
+
+    public Integer getCustomer_id() {
+        return customer_id;
+    }
+
+    public void setCustomer_id(Integer customer_id) {
+        this.customer_id = customer_id;
+    }
+
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
     }
 
     public Integer getId() {

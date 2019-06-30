@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -16,6 +17,7 @@ public interface MomentRepository extends CrudRepository<Moment,Integer> {
     List<Moment> findByDate(String date);
     List<Moment> findAll();
     Page<Moment> findAll(Pageable pageable);
+    Page<Moment> findByDateStartsWith(Date date, Pageable pageable);
     List<Moment> findByCustomerId(int customer_id);
     List<Moment> findByTag(String tag);
     @Query(value = "select e from Moment e ORDER BY e.date desc")

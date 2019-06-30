@@ -7,9 +7,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.nio.file.Paths;
 
 @Controller
 public class RegisterController {
@@ -18,9 +22,10 @@ public class RegisterController {
     private CustomerService customerService;
 
     @PostMapping(value = "/register")
-    public String newUser(Customer customer, HttpServletRequest request)
-    {
+    public String newUser( @RequestParam(name="logo",required=false) MultipartFile logo,Customer customer,
+                          HttpServletRequest request) throws IOException {
         System.out.println("post");
+        customer.setLogo(logo);
         if(customerService.Save(customer)) {
             HttpSession session=request.getSession();
             Customer customer1=customerService.findByEmail(customer.getEmail());

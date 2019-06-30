@@ -194,16 +194,21 @@
                 <div class="row">
                     <div class="col-md-12 col-sm-12">
                         <div class="single-blog two-column">
-                            <div class="post-thumb">
-                                <!--<a href="blogdetails.html"><img src="/images/blog/self.jpg" class="img-responsive"-->
-                                                                <!--alt=""></a>-->
-                                <div class="post-overlay">
-                                    <span class="uppercase"><a href="#">14 <br><small>Feb</small></a></span>
-                                </div>
-                            </div>
                             <div class="post-content clearfix" th:each="item2 : ${data}">
+                                <div class="post-thumb-head">
+                                    <img th:src="@{/Customer/image/get(id=${{item2.customer_id}})}"
+                                         class="img-responsive"
+                                         alt="" th::text="hhhhhh">
+                                </div>
                                 <h2 class="post-title bold" th:text="${{item2.name}}"></h2>
                                     <div class="post-content clearfix">
+                                        <div class="post-thumb-content">
+                                            <img th:src="@{/Moment/image/get(id=${{item2.id}})}" class="img-responsive"
+                                                 alt="">
+                                            <div class="post-overlay">
+                                                <span class="uppercase"><a id="comment-content-hide-size" th:text="${{item2.tag}}"></a></span>
+                                            </div>
+                                        </div>
                                         <h3 class="post-author" th:text="${{item2.date}}"></h3>
                                         <p><a th:text="${{item2.content}}"></a></p>
                                         <a href="#" class="read-more">View More</a>
@@ -296,13 +301,14 @@
                         <li><a href="#">left</a></li>
                         <li><a th:href="@{/Moment/page/0}">1</a></li>
                         <li><a th:href="@{/Moment/page/1}">2</a></li>
-                        <li class="active"><a th:href="@{/Moment/page/2}">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li><a href="#">6</a></li>
-                        <li><a href="#">7</a></li>
-                        <li><a href="#">8</a></li>
-                        <li><a href="#">9</a></li>
+                        <!--<li class="active"><a th:href="@{/Moment/page/2}">3</a></li>-->
+                        <li><a th:href="@{/Moment/page/2}">3</a></li>
+                        <li><a th:href="@{/Moment/page/3}">4</a></li>
+                        <li><a th:href="@{/Moment/page/4}">5</a></li>
+                        <li><a th:href="@{/Moment/page/5}">6</a></li>
+                        <li><a th:href="@{/Moment/page/6}">7</a></li>
+                        <li><a th:href="@{/Moment/page/7}">8</a></li>
+                        <li><a th:href="@{/Moment/page/8}">9</a></li>
                         <li><a href="#">right</a></li>
                     </ul>
                 </div>

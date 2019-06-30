@@ -7,13 +7,18 @@ import com.example.eeprojecttrue.Entity.Moment;
 import com.example.eeprojecttrue.Service.CustomerService;
 import com.example.eeprojecttrue.Service.MomentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.*;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -37,8 +42,11 @@ public class ChatController {
         return "blogthree";
     }
 
+
+
     @PostMapping(value = {"/newmoment"})
-    public String NewMoment(Moment moment, Model model,HttpSession session)
+    public String NewMoment(@RequestParam(name="logo",required=false) MultipartFile logo,Moment moment, Model model,
+                            HttpSession session)
     {
         if(moment.getContent()!=null)
         {
@@ -46,6 +54,7 @@ public class ChatController {
             Date date=new Date();
             moment.setDate(date);
             moment.setCustomer(customer);
+            moment.setLogo(logo);
             momentService.Save(moment);
             moment= (Moment) momentService.findById(moment.getId());
             customerService.addMoments(customer,moment);
@@ -156,5 +165,35 @@ public class ChatController {
         httpSession.setAttribute("time",-1);
         httpSession.setAttribute("page",page);
         return "redirect:/chat";
+    }
+
+
+
+    @GetMapping(value = "Customer/image/get")
+    public ResponseEntity<byte[]> Image_Customer(int id, HttpServletResponse res)
+    {
+        byte[] data=customerService.findById(id).getLogo();
+//            InputStream inputStream=new BufferedInputStream(new ByteArrayInputStream(data));
+//            int len=inputStream.available();
+//            byte[] buffer=new byte[len];
+            res.setContentType("image/jpeg");
+            res.setCharacterEncoding("UTF-8");
+//            OutputStream os=new BufferedOutputStream(res.getOutputStream());
+//            os.write(buffer);
+//            os.flush();
+//            os.close();
+
+            return new ResponseEntity<>(data, HttpStatus.OK);
+
+    }
+
+    @GetMapping(value = "Moment/image/get")
+    public ResponseEntity<byte[]> Image_Moment(int id, HttpServletResponse res)
+    {
+        res.setContentType("image/jpeg");
+        res.setCharacterEncoding("UTF-8");
+        byte[] data=momentService.findById(id).getLogo();
+        return new ResponseEntity<>(data, HttpStatus.OK);
+
     }
 }

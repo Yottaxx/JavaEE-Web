@@ -160,10 +160,11 @@
             <div class="col-md-4 col-sm-12">
                 <div class="contact-form bottom">
                     <h2>Send a message</h2>
-                    <form action="/register" method="post">
+                    <form action="/register" method="post" enctype="multipart/form-data">
                         Email:<input name="email" class="form-control"/><br/>
                         Password: <input type="password" name="password" class="form-control"/><br/>
                         name:<input name="name" class="form-control"/><br/>
+                        <input type="file" name="logo" class="form-control"/><br/>
                         <input type="submit" value="注册" class="form-control"/>
                     </form>
                 </div>

@@ -1,6 +1,9 @@
 package com.example.eeprojecttrue.Entity;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import javax.persistence.*;
+import java.io.IOException;
 import java.util.Date;
 
 @Entity
@@ -13,7 +16,23 @@ public class Moment {
     private Date date;
     private String title;
     private String tag;
+    @Lob
+    @Basic(fetch = FetchType.LAZY)
+    @Column(name=" logo", columnDefinition="longblob", nullable=true)
+    private byte[] Logo;
 
+    public byte[] getLogo() {
+        return Logo;
+    }
+
+    public void setLogo(MultipartFile multipartFile)
+    {
+        try {
+            Logo=multipartFile.getBytes();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     public String getTag() {
         return tag;
     }

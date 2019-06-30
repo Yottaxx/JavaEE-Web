@@ -1,6 +1,7 @@
 package com.example.eeprojecttrue.Entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "Customer")
@@ -20,7 +21,17 @@ public class Customer {
 //        this.password = password;
 //    }
 
+    @OneToMany(mappedBy = "customer",cascade=CascadeType.ALL,fetch = FetchType.LAZY)//People是关系的维护端，当删除 people，会级联删除
+    // address
+    private List<Moment> moments;//地址
 
+    public List<Moment> getMoments() {
+        return moments;
+    }
+
+    public void setMoments(List<Moment> moments) {
+        this.moments = moments;
+    }
 
     public Integer getId() {
         return id;

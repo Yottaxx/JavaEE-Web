@@ -30,15 +30,14 @@
 </head>
 <body>
 <p th:text="'hello, ' + ${post} + '!'"></p>
+<p th::text="'hello'+${post}"></p>
 <div class="col-md-4 col-sm-12">
     <div class="contact-form bottom">
-        <form action="/register" method="post">
-            Email:<input name="email"/><br/>
-            Password: <input type="password" name="password"/><br/>
-            name:<input name="name"/><br/>
-            <input type="submit" value="注册"/>
-        </form>
+        <a th:href="@{/Moment/return/${post}}">sdfasfsdf</a>
+        <a th:href="@{/Moment/get(id=${post})}">sdfasfsdf</a>
+
     </div>
 </div>
+
 </body>
 </html>

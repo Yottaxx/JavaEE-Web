@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,11 +17,11 @@
     <script src="/js/html5shiv.js"></script>
     <script src="/js/respond.min.js"></script>
     <![endif]-->
-    <link rel="shortcut icon" href="../static/images/ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../static/images/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../static/images/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../static/images/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="../static/images/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="/images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="/images/ico/apple-touch-icon-57-precomposed.png">
 </head><!--/head-->
 
 <body>
@@ -52,7 +52,7 @@
                 </button>
 
                 <a class="navbar-brand" href="index.html">
-                    <h1><img src="../static/images/logo.png" alt="logo"></h1>
+                    <h1><img src="/images/logo.png" alt="logo"></h1>
                 </a>
 
             </div>
@@ -113,8 +113,8 @@
             <div class="row">
                 <div class="action">
                     <div class="col-sm-12">
-                        <h1 class="title">Blog</h1>
-                        <p>Blog with right sidebar</p>
+                        <h1 class="title">杂货铺</h1>
+                        <a href="/newmoment">新唠叨</a>
                     </div>
                 </div>
             </div>
@@ -129,68 +129,63 @@
             <div class="col-md-3 col-sm-5">
                 <div class="sidebar blog-sidebar">
                     <div class="sidebar-item  recent">
-                        <h3>Comments</h3>
+                        <h3>选择</h3>
                         <div class="media">
                             <div class="pull-left">
-                                <a href="#"><img src="../static/images/portfolio/project1.jpg" alt=""></a>
+                                <a href="/newmoment/day"><img src="/images/portfolio/project1.jpg" alt=""></a>
                             </div>
                             <div class="media-body">
-                                <h4><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit,</a></h4>
-                                <p>posted on 07 March 2014</p>
+                                <h4><a href="/newmoment/day">最近二十四小时</a></h4>
+                                <p>新唠叨</p>
                             </div>
                         </div>
                         <div class="media">
                             <div class="pull-left">
-                                <a href="#"><img src="../static/images/portfolio/project2.jpg" alt=""></a>
+                                <a href="/newmoment/week"><img src="/images/portfolio/project2.jpg" alt=""></a>
                             </div>
                             <div class="media-body">
-                                <h4><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit,</a></h4>
-                                <p>posted on 07 March 2014</p>
+                                <h4><a href="/newmoment/week">最近一周</a></h4>
+                                <p>唠叨壳</p>
                             </div>
                         </div>
                         <div class="media">
                             <div class="pull-left">
-                                <a href="#"><img src="../static/images/portfolio/project3.jpg" alt=""></a>
+                                <a href="/newmoment/month"><img src="/images/portfolio/project3.jpg" alt=""></a>
                             </div>
                             <div class="media-body">
-                                <h4><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit,</a></h4>
-                                <p>posted on 07 March 2014</p>
+                                <h4><a href="/newmoment/month">最近一个月</a></h4>
+                                <p>唠叨沫</p>
                             </div>
                         </div>
                     </div>
-                    <div class="sidebar-item categories">
+                    <div class="随便逛逛">
                         <h3>Categories</h3>
                         <ul class="nav navbar-stacked">
-                            <li><a href="#">Lorem ipsum<span class="pull-right">(1)</span></a></li>
-                            <li class="active"><a href="#">Dolor sit amet<span class="pull-right">(8)</span></a></li>
-                            <li><a href="#">Adipisicing elit<span class="pull-right">(4)</span></a></li>
-                            <li><a href="#">Sed do<span class="pull-right">(9)</span></a></li>
-                            <li><a href="#">Eiusmod<span class="pull-right">(3)</span></a></li>
-                            <li><a href="#">Mockup<span class="pull-right">(4)</span></a></li>
-                            <li><a href="#">Ut enim ad minim <span class="pull-right">(2)</span></a></li>
-                            <li><a href="#">Veniam, quis nostrud <span class="pull-right">(8)</span></a></li>
+                            <li><a href="#">跳蚤市场<span class="pull-right">(1)</span></a></li>
+                            <li class="active"><a href="#">杂货铺<span class="pull-right">(8)</span></a></li>
+                            <li><a href="#">交友广场<span class="pull-right">(4)</span></a></li>
                         </ul>
                     </div>
                     <div class="sidebar-item tag-cloud">
-                        <h3>Tag Cloud</h3>
+                        <h3>标签</h3>
                         <ul class="nav nav-pills">
-                            <li><a href="#">Corporate</a></li>
-                            <li><a href="#">Joomla</a></li>
-                            <li><a href="#">Abstract</a></li>
-                            <li><a href="#">Creative</a></li>
-                            <li><a href="#">Business</a></li>
-                            <li><a href="#">Product</a></li>
+                            <li><a href="#">开心</a></li>
+                            <li><a href="#">糗事</a></li>
+                            <li><a href="#">郁闷</a></li>
+                            <li><a href="#">幸福</a></li>
+                            <li><a href="#">梦想</a></li>
+                            <li><a href="#">未来</a></li>
                         </ul>
                     </div>
                     <div class="sidebar-item popular">
                         <h3>Latest Photos</h3>
                         <ul class="gallery">
-                            <li><a href="#"><img src="../static/images/portfolio/popular1.jpg" alt=""></a></li>
-                            <li><a href="#"><img src="../static/images/portfolio/popular2.jpg" alt=""></a></li>
-                            <li><a href="#"><img src="../static/images/portfolio/popular3.jpg" alt=""></a></li>
-                            <li><a href="#"><img src="../static/images/portfolio/popular4.jpg" alt=""></a></li>
-                            <li><a href="#"><img src="../static/images/portfolio/popular5.jpg" alt=""></a></li>
-                            <li><a href="#"><img src="../static/images/portfolio/popular1.jpg" alt=""></a></li>
+                            <li><a href="#"><img src="/images/portfolio/popular1.jpg" alt=""></a></li>
+                            <li><a href="#"><img src="/images/portfolio/popular2.jpg" alt=""></a></li>
+                            <li><a href="#"><img src="/images/portfolio/popular3.jpg" alt=""></a></li>
+                            <li><a href="#"><img src="/images/portfolio/popular4.jpg" alt=""></a></li>
+                            <li><a href="#"><img src="/images/portfolio/popular5.jpg" alt=""></a></li>
+                            <li><a href="#"><img src="/images/portfolio/popular1.jpg" alt=""></a></li>
                         </ul>
                     </div>
                 </div>
@@ -200,94 +195,108 @@
                     <div class="col-md-12 col-sm-12">
                         <div class="single-blog two-column">
                             <div class="post-thumb">
-                                <a href="blogdetails.html"><img src="../static/images/blog/7.jpg" class="img-responsive"
-                                                                alt=""></a>
+                                <!--<a href="blogdetails.html"><img src="/images/blog/self.jpg" class="img-responsive"-->
+                                                                <!--alt=""></a>-->
                                 <div class="post-overlay">
                                     <span class="uppercase"><a href="#">14 <br><small>Feb</small></a></span>
                                 </div>
                             </div>
-                            <div class="post-content clearfix">
-                                <h2 class="post-title bold"><a href="blogdetails.html">Advanced business cards
-                                    design</a></h2>
-                                <h3 class="post-author"><a href="#">Posted by micron News</a></h3>
-                                <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie
-                                    consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et
-                                    iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore
-                                    te feugait nulla facilisi. Nam liber [...]</p>
-                                <a href="#" class="read-more">View More</a>
-                                <div class="post-bottom clearfix">
-                                    <ul class="nav navbar-nav post-nav">
-                                        <li><a href="#"><i class="fa fa-tag"></i>Creative</a></li>
-                                        <li><a href="#"><i class="fa fa-heart"></i>32 Love</a></li>
-                                        <li><a href="#"><i class="fa fa-comments"></i>3 Comments</a></li>
-                                    </ul>
-                                </div>
+                            <div class="post-content clearfix" th:each="item2 : ${data}">
+                                <h2 class="post-title bold" th:text="${{item2.name}}"></h2>
+                                    <div class="post-content clearfix">
+                                        <h3 class="post-author" th:text="${{item2.date}}"></h3>
+                                        <p><a th:text="${{item2.content}}"></a></p>
+                                        <a href="#" class="read-more">View More</a>
+                                        <div class="post-bottom clearfix">
+                                            <ul class="nav navbar-nav post-nav">
+                                                <li>
+                                                    <a th:href="@{/Moment/get(id=${{item2.id}})}">
+                                                    <i class="fa fa-tag"></i>
+                                                    <span class="post-author" th:text="${{item2.date}}">
+                                                    </span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a th:href="@{/Moment/get(id=${{item2.id}})}"><i class="fa fa-heart"></i>
+                                                    <span class="post-author" th:text="${{item2.date}}">
+                                                    </span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a th:href="@{/Moment/get(id=${{item2.id}})}" ><i class="fa fa-comments"></i>
+                                                    <span class="post-author" th:text="${{item2.date}}">
+                                                    </span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-12 col-sm-12">
-                        <div class="single-blog two-column">
-                            <div class="post-thumb">
-                                <a href="blogdetails.html"><img src="../static/images/blog/8.jpg" class="img-responsive"
-                                                                alt=""></a>
-                                <div class="post-overlay">
-                                    <span class="uppercase"><a href="#">14 <br><small>Feb</small></a></span>
-                                </div>
-                            </div>
-                            <div class="post-content clearfix">
-                                <h2 class="post-title bold"><a href="blogdetails.html">Advanced business cards
-                                    design</a></h2>
-                                <h3 class="post-author"><a href="#">Posted by micron News</a></h3>
-                                <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie
-                                    consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et
-                                    iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore
-                                    te feugait nulla facilisi. Nam liber [...]</p>
-                                <a href="#" class="read-more">View More</a>
-                                <div class="post-bottom clearfix">
-                                    <ul class="nav navbar-nav post-nav">
-                                        <li><a href="#"><i class="fa fa-tag"></i>Creative</a></li>
-                                        <li><a href="#"><i class="fa fa-heart"></i>32 Love</a></li>
-                                        <li><a href="#"><i class="fa fa-comments"></i>3 Comments</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12 col-sm-12">
-                        <div class="single-blog two-column">
-                            <div class="post-thumb">
-                                <a href="blogdetails.html"><img src="../static/images/blog/9.jpg" class="img-responsive"
-                                                                alt=""></a>
-                                <div class="post-overlay">
-                                    <span class="uppercase"><a href="#">14 <br><small>Feb</small></a></span>
-                                </div>
-                            </div>
-                            <div class="post-content clearfix">
-                                <h2 class="post-title bold"><a href="blogdetails.html">Advanced business cards
-                                    design</a></h2>
-                                <h3 class="post-author"><a href="#">Posted by micron News</a></h3>
-                                <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie
-                                    consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et
-                                    iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore
-                                    te feugait nulla facilisi. Nam liber [...]</p>
-                                <a href="#" class="read-more">View More</a>
-                                <div class="post-bottom clearfix">
-                                    <ul class="nav navbar-nav post-nav">
-                                        <li><a href="#"><i class="fa fa-tag"></i>Creative</a></li>
-                                        <li><a href="#"><i class="fa fa-heart"></i>32 Love</a></li>
-                                        <li><a href="#"><i class="fa fa-comments"></i>3 Comments</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <!--<div class="col-md-12 col-sm-12">-->
+                        <!--<div class="single-blog two-column">-->
+                            <!--<div class="post-thumb">-->
+                                <!--<a href="blogdetails.html"><img src="/images/blog/8.jpg" class="img-responsive"-->
+                                                                <!--alt=""></a>-->
+                                <!--<div class="post-overlay">-->
+                                    <!--<span class="uppercase"><a href="#">14 <br><small>Feb</small></a></span>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--<div class="post-content clearfix">-->
+                                <!--<h2 class="post-title bold"><a href="blogdetails.html">Advanced business cards-->
+                                    <!--design</a></h2>-->
+                                <!--<h3 class="post-author"><a href="#">Posted by micron News</a></h3>-->
+                                <!--<p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie-->
+                                    <!--consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et-->
+                                    <!--iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore-->
+                                    <!--te feugait nulla facilisi. Nam liber [...]</p>-->
+                                <!--<a href="#" class="read-more">View More</a>-->
+                                <!--<div class="post-bottom clearfix">-->
+                                    <!--<ul class="nav navbar-nav post-nav">-->
+                                        <!--<li><a href="#"><i class="fa fa-tag"></i>Creative</a></li>-->
+                                        <!--<li><a href="#"><i class="fa fa-heart"></i>32 Love</a></li>-->
+                                        <!--<li><a href="#"><i class="fa fa-comments"></i>3 Comments</a></li>-->
+                                    <!--</ul>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="col-md-12 col-sm-12">-->
+                        <!--<div class="single-blog two-column">-->
+                            <!--<div class="post-thumb">-->
+                                <!--<a href="blogdetails.html"><img src="/images/blog/9.jpg" class="img-responsive"-->
+                                                                <!--alt=""></a>-->
+                                <!--<div class="post-overlay">-->
+                                    <!--<span class="uppercase"><a href="#">14 <br><small>Feb</small></a></span>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--<div class="post-content clearfix">-->
+                                <!--<h2 class="post-title bold"><a href="blogdetails.html">Advanced business cards-->
+                                    <!--design</a></h2>-->
+                                <!--<h3 class="post-author"><a href="#">Posted by micron News</a></h3>-->
+                                <!--<p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie-->
+                                    <!--consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et-->
+                                    <!--iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore-->
+                                    <!--te feugait nulla facilisi. Nam liber [...]</p>-->
+                                <!--<a href="#" class="read-more">View More</a>-->
+                                <!--<div class="post-bottom clearfix">-->
+                                    <!--<ul class="nav navbar-nav post-nav">-->
+                                        <!--<li><a href="#"><i class="fa fa-tag"></i>Creative</a></li>-->
+                                        <!--<li><a href="#"><i class="fa fa-heart"></i>32 Love</a></li>-->
+                                        <!--<li><a href="#"><i class="fa fa-comments"></i>3 Comments</a></li>-->
+                                    <!--</ul>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
                 </div>
                 <div class="blog-pagination">
                     <ul class="pagination">
                         <li><a href="#">left</a></li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li class="active"><a href="#">3</a></li>
+                        <li><a th:href="@{/Moment/page/0}">1</a></li>
+                        <li><a th:href="@{/Moment/page/1}">2</a></li>
+                        <li class="active"><a th:href="@{/Moment/page/2}">3</a></li>
                         <li><a href="#">4</a></li>
                         <li><a href="#">5</a></li>
                         <li><a href="#">6</a></li>
@@ -307,14 +316,14 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12 text-center bottom-separator">
-                <img src="../static/images/home/under.png" class="img-responsive inline" alt="">
+                <img src="/images/home/under.png" class="img-responsive inline" alt="">
             </div>
             <div class="col-md-4 col-sm-6">
                 <div class="testimonial bottom">
                     <h2>Testimonial</h2>
                     <div class="media">
                         <div class="pull-left">
-                            <a href="#"><img src="../static/images/home/profile1.png" alt=""></a>
+                            <a href="#"><img src="/images/home/profile1.png" alt=""></a>
                         </div>
                         <div class="media-body">
                             <blockquote>Nisi commodo bresaola, leberkas venison eiusmod bacon occaecat labore tail.
@@ -324,7 +333,7 @@
                     </div>
                     <div class="media">
                         <div class="pull-left">
-                            <a href="#"><img src="../static/images/home/profile2.png" alt=""></a>
+                            <a href="#"><img src="/images/home/profile2.png" alt=""></a>
                         </div>
                         <div class="media-body">
                             <blockquote>Capicola nisi flank sed minim sunt aliqua rump pancetta leberkas venison
@@ -386,10 +395,10 @@
 <!--/#footer-->
 
 
-<script type="text/javascript" src="../static/js/jquery.js"></script>
-<script type="text/javascript" src="../static/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="../static/js/lightbox.min.js"></script>
-<script type="text/javascript" src="../static/js/wow.min.js"></script>
-<script type="text/javascript" src="../static/js/main.js"></script>
+<script type="text/javascript" src="/js/jquery.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/lightbox.min.js"></script>
+<script type="text/javascript" src="/js/wow.min.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
 </body>
 </html>

@@ -65,7 +65,7 @@ public class MainController  {
         return "portfolio";
     }
 
-    @RequestMapping(value = " /portfolio.html")
+    @RequestMapping(value = "/portfolio.html")
     public String GetPortfolioHtml() {
         return "portfolio";
     }
@@ -85,7 +85,9 @@ public class MainController  {
     @RequestMapping(value = "/tttest",method = RequestMethod.GET)
     public String newUser2(Model model)
     {
-       model.addAttribute("post","sdfsdf");
+       model.addAttribute("post",1);
        return "test";
     }
+
+
 }

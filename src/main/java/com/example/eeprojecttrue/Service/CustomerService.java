@@ -1,18 +1,23 @@
 package com.example.eeprojecttrue.Service;
 
 import com.example.eeprojecttrue.Entity.Customer;
+import com.example.eeprojecttrue.Entity.Moment;
 import com.example.eeprojecttrue.Repository.CustomerRepository;
+import com.example.eeprojecttrue.Repository.MomentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CustomerService  {
 
     @Autowired
     private CustomerRepository customerRepository;
-
+    @Autowired
+    private MomentRepository momentRepository;
     public boolean Save(Customer customer)
     {
         Customer customer1=customerRepository.findByEmail(customer.getEmail());
@@ -55,4 +60,24 @@ public class CustomerService  {
         return customerRepository.findAll();
     }
 
+    public List<Moment> findMoments(Customer customer)
+    {
+            Customer customer1=findById(customer.getId());
+            List<Moment> moments=customer1.getMoments();
+            return moments;
+    }
+
+    public void addMoments(Customer customer,Moment moment)
+    {
+        Customer customer1=findById(customer.getId());
+        List<Moment> moments=customer1.getMoments();
+        if(moments==null)
+        {
+            moments=new ArrayList<>();
+            moments.add(moment);
+            customer1.setMoments(moments);
+        }
+        else
+            moments.add(moment);
+    }
 }

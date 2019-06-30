@@ -211,7 +211,9 @@
                                         </div>
                                         <h3 class="post-author" th:text="${{item2.date}}"></h3>
                                         <p><a th:text="${{item2.content}}"></a></p>
-                                        <a href="#" class="read-more">View More</a>
+                                        <a th:href="@{/detail(moment_id=${{item2.id}})}" class="read-more"
+                                           methods="post">View
+                                            More</a>
                                         <div class="post-bottom clearfix">
                                             <ul class="nav navbar-nav post-nav">
                                                 <li>

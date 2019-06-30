@@ -1,27 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Blog Details | Triangle</title>
-    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../static/css/font-awesome.min.css" rel="stylesheet">
-    <link href="../static/css/lightbox.css" rel="stylesheet">
-    <link href="../static/css/animate.min.css" rel="stylesheet">
-    <link href="../static/css/main.css" rel="stylesheet">
-    <link href="../static/css/responsive.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/lightbox.css" rel="stylesheet">
+    <link href="/css/animate.min.css" rel="stylesheet">
+    <link href="/css/main.css" rel="stylesheet">
+    <link href="/css/responsive.css" rel="stylesheet">
 
     <!--[if lt IE 9]>
-    <script src="../static/js/html5shiv.js"></script>
-    <script src="../static/js/respond.min.js"></script>
+    <script src="/js/html5shiv.js"></script>
+    <script src="/js/respond.min.js"></script>
     <![endif]-->
-    <link rel="shortcut icon" href="../static/images/ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../static/images/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../static/images/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../static/images/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="../static/images/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="/images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="/images/ico/apple-touch-icon-57-precomposed.png">
     <script type="text/javascript">var switchTo5x = true;</script>
     <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
     <script type="text/javascript">stLight.options({
@@ -60,7 +60,7 @@
                 </button>
 
                 <a class="navbar-brand" href="index.html">
-                    <h1><img src="../static/images/logo.png" alt="logo"></h1>
+                    <h1><img src="/images/logo.png" alt="logo"></h1>
                 </a>
 
             </div>
@@ -121,9 +121,9 @@
         <div class="container">
             <div class="row">
                 <div class="action">
-                    <div class="col-sm-12">
-                        <h1 class="title">Blog Details</h1>
-                        <p>Blog with right sidebar</p>
+                    <div class="col-sm-12" th:each="item : ${detail}">
+                        <h1 class="title" th:text="${{item.name}}"></h1>
+                        <p th:text="${{item.date}}"></p>
                     </div>
                 </div>
             </div>
@@ -139,38 +139,17 @@
                 <div class="row">
                     <div class="col-md-12 col-sm-12">
                         <div class="single-blog blog-details two-column">
-                            <div class="post-thumb">
-                                <a href="#"><img src="../static/images/blog/7.jpg" class="img-responsive" alt=""></a>
-                                <div class="post-overlay">
-                                    <span class="uppercase"><a href="#">14 <br><small>Feb</small></a></span>
+                            <div class="post-content overflow"  th:each="item : ${detail}">
+                                <div class="post-thumb">
+                                    <a href="#"><img th:src="@{/Moment/image/get(id=${{item.id}})}" class="img-responsive" alt=""></a>
+                                    <div class="post-overlay">
+                                        <span class="uppercase"><a href="#">14 <br><small>Feb</small></a></span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="post-content overflow">
-                                <h2 class="post-title bold"><a href="#">Advanced business cards design</a></h2>
-                                <h3 class="post-author"><a href="#">Posted by micron News</a></h3>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                    Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                                    unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                    It has survived not only five centuries, but also the leap into electronic
-                                    typesetting, remaining essentially unchanged. It was popularised in the 1960s with
-                                    the release of Letraset sheets containing Lorem Ipsum passages, and more recently
-                                    with desktop publishing software like Aldus PageMaker including versions of Lorem
-                                    Ipsum. <br> <br>
-
-                                    There are many variations of passages of Lorem Ipsum available, but the majority
-                                    have suffered alteration in some form, by injected humour, or randomised words which
-                                    don't look even slightly believable. If you are going to use a passage of Lorem
-                                    Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of
-                                    text. All the Lorem Ipsum generators on the Internet tend to repeat predefined
-                                    chunks as necessary, making this the first true generator on the Internet. It uses a
-                                    dictionary of over 200 Latin words, combined with a handful of model sentence
-                                    structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem
-                                    Ipsum is therefore always free from repetition, injected humour, or
-                                    non-characteristic words etc It is a long established fact that a reader will be
-                                    distracted by the readable content of a page when looking at its layout. The point
-                                    of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,
-                                    as opposed to using 'Content here, content here', making it look like readable
-                                    English. </p>
+                                <h2 class="post-title bold"><a href="#" th:text="${{item.title}}"></a></h2>
+                                <h3
+                                        class="post-author"><a href="#" th:text="${{item.name}}"></a></h3>
+                                <p th:text="${{item.content}}"> <br> <br></p>
                                 <div class="post-bottom overflow">
                                     <ul class="nav navbar-nav post-nav">
                                         <li><a href="#"><i class="fa fa-tag"></i>Creative</a></li>
@@ -185,27 +164,27 @@
                                     <span class='st_pinterest_hcount'></span>
                                     <span class='st_email_hcount'></span>
                                 </div>
-                                <div class="author-profile padding">
-                                    <div class="row">
-                                        <div class="col-sm-2">
-                                            <img src="../static/images/blogdetails/1.png" alt="">
-                                        </div>
-                                        <div class="col-sm-10">
-                                            <h3>Rodrix Hasel</h3>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                                tempor incididunt ut labore et dolore magna aliq Ut enim ad minim
-                                                veniam, quis nostrud exercitation ullamco laboris nisi</p>
-                                            <span>Website:<a href="www.jooomshaper.com"> www.jooomshaper.com</a></span>
-                                        </div>
-                                    </div>
-                                </div>
+                                <!--<div class="author-profile padding">-->
+                                    <!--<div class="row">-->
+                                        <!--<div class="col-sm-2">-->
+                                            <!--<img src="/images/blogdetails/1.png" alt="">-->
+                                        <!--</div>-->
+                                        <!--<div class="col-sm-10">-->
+                                            <!--<h3>Rodrix Hasel</h3>-->
+                                            <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod-->
+                                                <!--tempor incididunt ut labore et dolore magna aliq Ut enim ad minim-->
+                                                <!--veniam, quis nostrud exercitation ullamco laboris nisi</p>-->
+                                            <!--<span>Website:<a href="www.jooomshaper.com"> www.jooomshaper.com</a></span>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
                                 <div class="response-area">
                                     <h2 class="bold">Comments</h2>
                                     <ul class="media-list">
                                         <li class="media">
                                             <div class="post-comment">
                                                 <a class="pull-left" href="#">
-                                                    <img class="media-object" src="../static/images/blogdetails/2.png" alt="">
+                                                    <img class="media-object" src="/images/blogdetails/2.png" alt="">
                                                 </a>
                                                 <div class="media-body">
                                                     <span><i class="fa fa-user"></i>Posted by <a
@@ -225,7 +204,7 @@
                                                 <ul class="media-list">
                                                     <li class="post-comment reply">
                                                         <a class="pull-left" href="#">
-                                                            <img class="media-object" src="../static/images/blogdetails/3.png"
+                                                            <img class="media-object" src="/images/blogdetails/3.png"
                                                                  alt="">
                                                         </a>
                                                         <div class="media-body">
@@ -245,7 +224,7 @@
                                         <li class="media">
                                             <div class="post-comment">
                                                 <a class="pull-left" href="#">
-                                                    <img class="media-object" src="../static/images/blogdetails/4.png" alt="">
+                                                    <img class="media-object" src="/images/blogdetails/4.png" alt="">
                                                 </a>
                                                 <div class="media-body">
                                                     <span><i class="fa fa-user"></i>Posted by <a
@@ -276,7 +255,7 @@
                         <h3>Comments</h3>
                         <div class="media">
                             <div class="pull-left">
-                                <a href="#"><img src="../static/images/portfolio/project1.jpg" alt=""></a>
+                                <a href="#"><img src="/images/portfolio/project1.jpg" alt=""></a>
                             </div>
                             <div class="media-body">
                                 <h4><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit,</a></h4>
@@ -285,7 +264,7 @@
                         </div>
                         <div class="media">
                             <div class="pull-left">
-                                <a href="#"><img src="../static/images/portfolio/project2.jpg" alt=""></a>
+                                <a href="#"><img src="/images/portfolio/project2.jpg" alt=""></a>
                             </div>
                             <div class="media-body">
                                 <h4><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit,</a></h4>
@@ -294,7 +273,7 @@
                         </div>
                         <div class="media">
                             <div class="pull-left">
-                                <a href="#"><img src="../static/images/portfolio/project3.jpg" alt=""></a>
+                                <a href="#"><img src="/images/portfolio/project3.jpg" alt=""></a>
                             </div>
                             <div class="media-body">
                                 <h4><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit,</a></h4>
@@ -329,12 +308,12 @@
                     <div class="sidebar-item popular">
                         <h3>Latest Photos</h3>
                         <ul class="gallery">
-                            <li><a href="#"><img src="../static/images/portfolio/popular1.jpg" alt=""></a></li>
-                            <li><a href="#"><img src="../static/images/portfolio/popular2.jpg" alt=""></a></li>
-                            <li><a href="#"><img src="../static/images/portfolio/popular3.jpg" alt=""></a></li>
-                            <li><a href="#"><img src="../static/images/portfolio/popular4.jpg" alt=""></a></li>
-                            <li><a href="#"><img src="../static/images/portfolio/popular5.jpg" alt=""></a></li>
-                            <li><a href="#"><img src="../static/images/portfolio/popular1.jpg" alt=""></a></li>
+                            <li><a href="#"><img src="/images/portfolio/popular1.jpg" alt=""></a></li>
+                            <li><a href="#"><img src="/images/portfolio/popular2.jpg" alt=""></a></li>
+                            <li><a href="#"><img src="/images/portfolio/popular3.jpg" alt=""></a></li>
+                            <li><a href="#"><img src="/images/portfolio/popular4.jpg" alt=""></a></li>
+                            <li><a href="#"><img src="/images/portfolio/popular5.jpg" alt=""></a></li>
+                            <li><a href="#"><img src="/images/portfolio/popular1.jpg" alt=""></a></li>
                         </ul>
                     </div>
                 </div>
@@ -348,14 +327,14 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12 text-center bottom-separator">
-                <img src="../static/images/home/under.png" class="img-responsive inline" alt="">
+                <img src="/images/home/under.png" class="img-responsive inline" alt="">
             </div>
             <div class="col-md-4 col-sm-6">
                 <div class="testimonial bottom">
                     <h2>Testimonial</h2>
                     <div class="media">
                         <div class="pull-left">
-                            <a href="#"><img src="../static/images/home/profile1.png" alt=""></a>
+                            <a href="#"><img src="/images/home/profile1.png" alt=""></a>
                         </div>
                         <div class="media-body">
                             <blockquote>Nisi commodo bresaola, leberkas venison eiusmod bacon occaecat labore tail.
@@ -365,7 +344,7 @@
                     </div>
                     <div class="media">
                         <div class="pull-left">
-                            <a href="#"><img src="../static/images/home/profile2.png" alt=""></a>
+                            <a href="#"><img src="/images/home/profile2.png" alt=""></a>
                         </div>
                         <div class="media-body">
                             <blockquote>Capicola nisi flank sed minim sunt aliqua rump pancetta leberkas venison
@@ -427,10 +406,10 @@
 <!--/#footer-->
 
 
-<script type="text/javascript" src="../static/js/jquery.js"></script>
-<script type="text/javascript" src="../static/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="../static/js/lightbox.min.js"></script>
-<script type="text/javascript" src="../static/js/wow.min.js"></script>
-<script type="text/javascript" src="../static/js/main.js"></script>
+<script type="text/javascript" src="/js/jquery.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/lightbox.min.js"></script>
+<script type="text/javascript" src="/js/wow.min.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
 </body>
 </html>

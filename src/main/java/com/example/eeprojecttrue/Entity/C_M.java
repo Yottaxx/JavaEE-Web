@@ -10,6 +10,7 @@ import java.util.Date;
 @Table(name = "C_M")
 public class C_M  {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String content;
     private Date date;
@@ -17,6 +18,7 @@ public class C_M  {
     private String name;
     private Integer customer_id;
     private String tag;
+    private int awesome;
     public C_M(Customer customer,Moment moment)
     {
        this.id=moment.getId();
@@ -26,6 +28,15 @@ public class C_M  {
        this.date=moment.getDate();
        this.customer_id=customer.getId();
        this.tag=moment.getTag();
+       this.awesome=moment.getAwesome();
+    }
+
+    public int getAwesome() {
+        return awesome;
+    }
+
+    public void setAwesome(int awesome) {
+        this.awesome = awesome;
     }
 
     public Integer getCustomer_id() {

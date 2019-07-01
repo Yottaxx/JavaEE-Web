@@ -159,6 +159,15 @@ public class ChatController {
         return "index";
     }
 
+    @GetMapping(value = "/Moment/awesome")
+    public void MomentOperation_plus( int id)
+    {
+       momentService.awesome(id);
+    }
+
+
+
+
     @GetMapping(value = "/Moment/page/{page}")
     public String MomentOperation_type2(@PathVariable("page") int page, HttpSession httpSession)
     {

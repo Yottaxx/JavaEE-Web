@@ -1,5 +1,7 @@
 package com.example.eeprojecttrue.Service;
 
+import com.example.eeprojecttrue.Entity.Comment;
+import com.example.eeprojecttrue.Entity.Customer;
 import com.example.eeprojecttrue.Entity.Moment;
 import com.example.eeprojecttrue.Repository.MomentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -60,6 +63,26 @@ public class MomentService {
         return list;
     }
 
+    public void addComment(Moment moment, Comment comment)
+    {
+        Moment moment1=findById(moment.getId());
+        List<Comment> comments=moment.getComments();
+        if(comments==null)
+        {
+            comments=new ArrayList<>();
+            comments.add(comment);
+            moment1.setComments(comments);
+        }
+        else
+            comments.add(comment);
+    }
+
+    public int awesome(int id)
+    {
+        Moment moment=momentRepository.findById(id);
+        moment.setAwesome(moment.getAwesome()+1);
+        return moment.getAwesome();
+    }
 //    public List<Moment> findByDateStartsWith(Date date)
 //    {
 //        return momentRepository.findByDateStartsWith(date);

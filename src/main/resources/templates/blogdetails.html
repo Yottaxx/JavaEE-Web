@@ -22,9 +22,18 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="/images/ico/apple-touch-icon-57-precomposed.png">
-    <script type="text/javascript">var switchTo5x = true;</script>
     <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
-    <script type="text/javascript">stLight.options({
+    <script th:inline="javascript">function retrieveGuests(comment_id,moment_id) {
+        var con="#searchSurname"+(comment_id+1);
+        $.ajax({
+            type:"POST",
+            url:"/new_children_comment?comment_id="+comment_id,
+            data:{content:$(con).val()},
+            window:location.href = "/detail?moment_id="+moment_id
+        });
+    }
+
+    stLight.options({
         publisher: "7e8eb33b-fbe0-4915-9b93-09490e3d10df",
         doNotHash: false,
         doNotCopy: false,
@@ -152,7 +161,10 @@
                                 <p th:text="${{item.content}}"> <br> <br></p>
                                 <div class="post-bottom overflow">
                                     <ul class="nav navbar-nav post-nav">
-                                        <li><a href="#"><i class="fa fa-tag"></i>Creative</a></li>
+                                        <li><a href="#"><i class="fa fa-tag">
+                                            <span class="post-author" th:text="${{item.tag}}">
+                                            </span>
+                                        </i></a></li>
                                         <li><a href="#"><i class="fa fa-heart"></i>32 Love</a></li>
                                         <li><a href="#"><i class="fa fa-comments"></i>3 Comments</a></li>
                                     </ul>
@@ -178,69 +190,103 @@
                                         <!--</div>-->
                                     <!--</div>-->
                                 <!--</div>-->
-                                <div class="response-area">
+                                <div class="response-area" id="resultsBlock">
                                     <h2 class="bold">Comments</h2>
                                     <ul class="media-list">
-                                        <li class="media">
+                                        <li class="media"  th:each="item2 : ${comments}">
                                             <div class="post-comment">
                                                 <a class="pull-left" href="#">
-                                                    <img class="media-object" src="/images/blogdetails/2.png" alt="">
+                                                    <img class="media-object" id="comment-img"
+                                                         th:src="@{/Customer/image/get(id=${{item2.Customer_id}})}" alt="">
                                                 </a>
                                                 <div class="media-body">
                                                     <span><i class="fa fa-user"></i>Posted by <a
-                                                            href="#">Endure</a></span>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                                        eiusmod tempor incididunt ut labore et dolore magna aliq Ut enim
-                                                        ad minim veniam, quis nostrud exercitation ullamco laboris
-                                                        nisi.</p>
+                                                            href="#" th:text="${{item2.Customer_name}}"></a></span>
+                                                    <p th:text="${{item2.content}}"></p>
                                                     <ul class="nav navbar-nav post-nav">
-                                                        <li><a href="#"><i class="fa fa-clock-o"></i>February
-                                                            11,2014</a></li>
-                                                        <li><a href="#"><i class="fa fa-reply"></i>Reply</a></li>
+                                                        <li><a href="#" th:text="${{item2.date}}"><i
+                                                                class="fa fa-clock-o"></i></a></li>
+                                                        <li>
+                                                            <!--<label th:for="searchSurname+(${item2.id}+1)"></label>-->
+
+                                                            <!--<button id="button" name="searchButton" class="form-control"-->
+                                                                    <!--th:onclick="retrieveGuests(([[${item2.id}]]),([[${item2.F_moment_id}]]))"-->
+                                                                    <!--type="button"-->
+                                                            <!--&gt;<i class="fa fa-reply"></i></button>-->
+                                                            <!--<input id="input" th:type="text" th:id-->
+                                                                    <!--="searchSurname+(${item2.id}+1)" class="form-control"-->
+                                                                   <!--name="content"/>-->
+                                                        </li>
                                                     </ul>
-                                                </div>
+                                                    <br/><br/>
+                                                    <div class="col-md-10 col-sm-12">
+                                                        <div class="contact-form bottom">
+                                                            <form name="contact-form" method="post" action="sendemail.php">
+                                                                <input id="input" th:type="text" th:id
+                                                                        ="searchSurname+(${item2.id}+1)" class="form-control"
+                                                                       name="content"/>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-2 col-sm-6">
+                                                        <div class="contact-info bottom">
+                                                            <button id="button" name="searchButton" class="form-control"
+                                                                    th:onclick="retrieveGuests(([[${item2.id}]]),([[${item2.F_moment_id}]]))"
+                                                                    type="button"><i class="fa fa-reply"></i></button>
+                                                        </div>
+                                                    </div>
+                                                </div >
+                                                <!--<input th:type="text" th:id ="searchSurname+(${item2.id}+1)" -->
+                                                       <!--name="content" class="form-control"/>-->
+                                                <!--<br />-->
+                                                <!--<label th:for="searchSurname+(${item2.id}+1)" th:text="#{search.label}">Search-->
+                                                    <!--label:</label>-->
+                                                <!--<button id="searchButton" name="searchButton"-->
+                                                        <!--th:onclick="retrieveGuests(([[${item2.id}]]),([[${item2.F_moment_id}]]))" type="button"-->
+                                                <!--&gt;Search button</button>-->
                                             </div>
-                                            <div class="parrent">
+                                            <div class="parrent"  th:each="item3 : ${item2.children}">
                                                 <ul class="media-list">
                                                     <li class="post-comment reply">
                                                         <a class="pull-left" href="#">
-                                                            <img class="media-object" src="/images/blogdetails/3.png"
+                                                            <img class="media-object" id="comment-comment-img"
+                                                                 th:src="@{/Customer/image/get(id=${{item3.Customer_id}})}"
                                                                  alt="">
                                                         </a>
                                                         <div class="media-body">
                                                             <span><i class="fa fa-user"></i>Posted by <a
-                                                                    href="#">Endure</a></span>
-                                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                                                sed do eiusmod tempor incididunt ut </p>
+                                                                    href="#"  th:text="${{item3.customer_name}}">
+                                                                </a></span>
+                                                            <p th:text="${{item3.content}}"></p>
                                                             <ul class="nav navbar-nav post-nav">
-                                                                <li><a href="#"><i class="fa fa-clock-o"></i>February
-                                                                    11,2014</a></li>
+                                                                <li><a href="#"><i class="fa fa-clock-o"
+                                                                                   th:text="${{item3.date}}"></i></a></li>
                                                             </ul>
                                                         </div>
                                                     </li>
                                                 </ul>
                                             </div>
                                         </li>
-                                        <li class="media">
-                                            <div class="post-comment">
-                                                <a class="pull-left" href="#">
-                                                    <img class="media-object" src="/images/blogdetails/4.png" alt="">
-                                                </a>
-                                                <div class="media-body">
-                                                    <span><i class="fa fa-user"></i>Posted by <a
-                                                            href="#">Endure</a></span>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                                        eiusmod tempor incididunt ut labore et dolore magna aliq Ut enim
-                                                        ad minim veniam, quis nostrud exercitation ullamco laboris
-                                                        nisi.</p>
-                                                    <ul class="nav navbar-nav post-nav">
-                                                        <li><a href="#"><i class="fa fa-clock-o"></i>February
-                                                            11,2014</a></li>
-                                                        <li><a href="#"><i class="fa fa-reply"></i>Reply</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </li>
+                                        <!--<li class="media">-->
+                                            <!--<div class="post-comment">-->
+                                                <!--<a class="pull-left" href="#">-->
+                                                    <!--<img class="media-object" src="/images/blogdetails/4.png" alt="">-->
+                                                <!--</a>-->
+                                                <!--<div class="media-body">-->
+                                                    <!--<span><i class="fa fa-user"></i>Posted by <a-->
+                                                            <!--href="#">Endure</a></span>-->
+                                                    <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do-->
+                                                        <!--eiusmod tempor incididunt ut labore et dolore magna aliq Ut enim-->
+                                                        <!--ad minim veniam, quis nostrud exercitation ullamco laboris-->
+                                                        <!--nisi.</p>-->
+                                                    <!--<ul class="nav navbar-nav post-nav">-->
+                                                        <!--<li><a href="#"><i class="fa fa-clock-o"></i>February-->
+                                                            <!--11,2014</a></li>-->
+                                                        <!--<li><a href="#"><i class="fa fa-reply"></i>Reply</a></li>-->
+                                                    <!--</ul>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                        <!--</li>-->
 
                                     </ul>
                                 </div><!--/Response-area-->
@@ -329,7 +375,7 @@
             <div class="col-sm-12 text-center bottom-separator">
                 <img src="/images/home/under.png" class="img-responsive inline" alt="">
             </div>
-            <div class="col-md-4 col-sm-6">
+            <div class="col-md-6 col-sm-6">
                 <div class="testimonial bottom">
                     <h2>Testimonial</h2>
                     <div class="media">
@@ -355,7 +401,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3 col-sm-6">
+            <div class="col-md-5 col-sm-6">
                 <div class="contact-info bottom">
                     <h2>Contacts</h2>
                     <address>
@@ -371,27 +417,6 @@
                         Bristol, BS2 0UY <br>
                         United Kingdom <br>
                     </address>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-12">
-                <div class="contact-form bottom">
-                    <h2>Send a message</h2>
-                    <form id="main-contact-form" name="contact-form" method="post" action="sendemail.php">
-                        <div class="form-group">
-                            <input type="text" name="name" class="form-control" required="required" placeholder="Name">
-                        </div>
-                        <div class="form-group">
-                            <input type="email" name="email" class="form-control" required="required"
-                                   placeholder="Email Id">
-                        </div>
-                        <div class="form-group">
-                            <textarea name="message" id="message" required="required" class="form-control" rows="8"
-                                      placeholder="Your text here"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <input type="submit" name="submit" class="btn btn-submit" value="Submit">
-                        </div>
-                    </form>
                 </div>
             </div>
             <div class="col-sm-12">

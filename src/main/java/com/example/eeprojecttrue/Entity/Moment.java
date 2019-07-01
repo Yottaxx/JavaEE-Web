@@ -5,6 +5,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.persistence.*;
 import java.io.IOException;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "Moment")
@@ -16,10 +17,19 @@ public class Moment {
     private Date date;
     private String title;
     private String tag;
+    private int awesome=0;
     @Lob
     @Basic(fetch = FetchType.LAZY)
     @Column(name=" logo", columnDefinition="longblob", nullable=true)
     private byte[] Logo;
+
+    public int getAwesome() {
+        return awesome;
+    }
+
+    public void setAwesome(int awesome) {
+        this.awesome = awesome;
+    }
 
     public byte[] getLogo() {
         return Logo;
@@ -52,6 +62,19 @@ public class Moment {
     @JoinColumn(name = "customer_id")
     @ManyToOne(fetch = FetchType.LAZY)
     private Customer customer;
+
+
+    @OneToMany(mappedBy = "moment",cascade=CascadeType.ALL,fetch = FetchType.LAZY)//People是关系的维护端，当删除 people，会级联删除
+    // address
+    private List<Comment> comments;//地址
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
 
     public Integer getId() {
         return id;

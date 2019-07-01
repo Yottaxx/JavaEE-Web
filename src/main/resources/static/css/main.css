@@ -486,6 +486,17 @@ ul.sub-menu {
     height: 40px;
 }
 
+
+.form-control-change {
+    display: inline-block;
+    border: 1px solid #eaeaea;
+    font-weight: 300;
+    outline: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    height: 40px;
+}
+
 .form-control:hover,
 .form-control:focus {
     border-color: #4fcccd;
@@ -493,7 +504,24 @@ ul.sub-menu {
     -webkit-box-shadow: none;
     box-shadow: none;
 }
-
+.form-control input .comments
+{
+    display: inline-block;
+    border: 1px solid #eaeaea;
+    font-weight: 300;
+    outline: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    height: 40px;
+}
+.form-control button #button
+{
+    display: block;
+}
+.form-control button #input
+{
+    display: block;
+}
 .btn-submit {
     width: 100%;
     background-color: #4fcccd;
@@ -1625,6 +1653,18 @@ Blog Default
     margin-top: 0;
 }
 
+#comment-img
+{
+    width: 127px;
+    height: 137px;
+    border: #00AEEF 3px;
+}
+#comment-comment-img
+{
+    width: 127px;
+    height: 137px;
+    border: #00AEEF 3px;
+}
 .post-title a,
 .comments-number a {
     color: #686868;
@@ -1635,6 +1675,18 @@ Blog Default
 
 }
 
+.post-content .post-author:hover {
+
+    border: #00AEEF 1px;
+    margin-top: 0;
+
+}
+.post-content .post-author:checked{
+
+    border: #5cb85c 1px;
+    margin-top: 0;
+
+}
 .post-content .post-author a {
     font-weight: 300;
     font-size: 14px;

@@ -23,9 +23,30 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="/images/ico/apple-touch-icon-57-precomposed.png">
 </head><!--/head-->
+<script>
+    var result=document.getElementById("result");
+    var file=document.getElementById("file");
 
-<body>
-<header id="header">
+    function readAsDataURL(){
+
+        var file = document.getElementById("file").files;
+        var result=document.getElementById("result");
+
+        for(i = 0; i< file.length; i ++) {
+            var reader    = new FileReader();
+            reader.readAsDataURL(file[i]);
+            reader.onload=function(e){
+                //多图预览
+                result.innerHTML = result.innerHTML + '<img src="' + this.result
+                    +'" alt="" class="img-responsive"/>';
+            }
+
+        }
+
+    }
+</script>
+
+<body><header id="header">
     <div class="container">
         <div class="row">
             <div class="col-sm-12 overflow">
@@ -58,40 +79,28 @@
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="active"><a href="index.html">Home</a></li>
-                    <li class="dropdown"><a href="#">Pages <i class="fa fa-angle-down"></i></a>
+                    <li><a href="index.html">主页</a></li>
+                    <li class="dropdown"><a href="#">页面 <i class="fa fa-angle-down"></i></a>
                         <ul role="menu" class="sub-menu">
-                            <li><a href="aboutus.html">About</a></li>
-                            <li><a href="aboutus2.html">About 2</a></li>
-                            <li><a href="service.html">Services</a></li>
-                            <li><a href="pricing.html">Pricing</a></li>
-                            <li><a href="contact.html">Contact us</a></li>
-                            <li><a href="contact2.html">Contact us 2</a></li>
-                            <li><a href="404.html">404 error</a></li>
-                            <li><a href="coming-soon.html">Coming Soon</a></li>
+                            <li><a href="aboutus.html">关于我们</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown"><a href="blog.html">Blog <i class="fa fa-angle-down"></i></a>
+                    <li class="dropdown active"><a href="#">唠叨铺儿 <i class="fa fa-angle-down"></i></a>
                         <ul role="menu" class="sub-menu">
-                            <li><a href="blog.html">Blog Default</a></li>
-                            <li><a href="blogtwo.html">Timeline Blog</a></li>
-                            <li><a href="blogone.html">2 Columns + Right Sidebar</a></li>
-                            <li><a href="blogthree.html">1 Column + Left Sidebar</a></li>
-                            <li><a href="blogfour.html">Blog Masonary</a></li>
-                            <li><a href="blogdetails.html">Blog Details</a></li>
+                            <li><a href="blogthree.html">唠叨唠叨</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown"><a href="portfolio.html">Portfolio <i class="fa fa-angle-down"></i></a>
+                    <li class="dropdown"><a href="#">跳蚤地儿 <i class="fa fa-angle-down"></i></a>
                         <ul role="menu" class="sub-menu">
-                            <li><a href="portfolio.html">Portfolio Default</a></li>
-                            <li><a href="portfoliofour.html">Isotope 3 Columns + Right Sidebar</a></li>
-                            <li><a href="portfolioone.html">3 Columns + Right Sidebar</a></li>
-                            <li><a href="portfoliotwo.html">3 Columns + Left Sidebar</a></li>
-                            <li><a href="portfoliothree.html">2 Columns</a></li>
-                            <li><a href="portfolio-details.html">Portfolio Details</a></li>
+                            <li><a href="portfolio.html">二手市场</a></li>
                         </ul>
                     </li>
-                    <li><a href="shortcodes.html ">Shortcodes</a></li>
+                    <li><a href="#">设置</a>
+                        <ul role="menu" class="sub-menu">
+                            <li><a href="/re_register">重置</a>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
             <div class="search">
@@ -105,75 +114,88 @@
         </div>
     </div>
 </header>
-<!--/#header-->
-
 <footer id="footer">
     <div class="container">
         <div class="row">
-            <div class="col-sm-12 text-center bottom-separator">
-                <img src="/images/home/under.png" class="img-responsive inline" alt="">
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <div class="testimonial bottom">
-                    <h2>Testimonial</h2>
-                    <div class="media">
-                        <div class="pull-left">
-                            <a href="#"><img src="/images/home/profile1.png" alt=""></a>
-                        </div>
-                        <div class="media-body">
-                            <blockquote>Nisi commodo bresaola, leberkas venison eiusmod bacon occaecat labore tail.
-                            </blockquote>
-                            <h3><a href="#">- Jhon Kalis</a></h3>
-                        </div>
-                    </div>
-                    <div class="media">
-                        <div class="pull-left">
-                            <a href="#"><img src="/images/home/profile2.png" alt=""></a>
-                        </div>
-                        <div class="media-body">
-                            <blockquote>Capicola nisi flank sed minim sunt aliqua rump pancetta leberkas venison
-                                eiusmod.
-                            </blockquote>
-                            <h3><a href="">- Abraham Josef</a></h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="contact-info bottom">
-                    <h2>Contacts</h2>
-                    <address>
-                        E-mail: <a href="mailto:someone@example.com">email@email.com</a> <br>
-                        Phone: +1 (123) 456 7890 <br>
-                        Fax: +1 (123) 456 7891 <br>
-                    </address>
+            <!--<div class="col-sm-12 text-center bottom-separator">-->
+                <!--<img src="/images/home/under.png" class="img-responsive inline" alt="">-->
+            <!--</div>-->
+            <!--<div class="col-md-4 col-sm-6">-->
+                <!--<div class="testimonial bottom">-->
+                    <!--<h2>Testimonial</h2>-->
+                    <!--<div class="media">-->
+                        <!--<div class="pull-left">-->
+                            <!--<a href="#"><img src="/images/home/profile1.png" alt=""></a>-->
+                        <!--</div>-->
+                        <!--<div class="media-body">-->
+                            <!--<blockquote>Nisi commodo bresaola, leberkas venison eiusmod bacon occaecat labore tail.-->
+                            <!--</blockquote>-->
+                            <!--<h3><a href="#">- Jhon Kalis</a></h3>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="media">-->
+                        <!--<div class="pull-left">-->
+                            <!--<a href="#"><img src="/images/home/profile2.png" alt=""></a>-->
+                        <!--</div>-->
+                        <!--<div class="media-body">-->
+                            <!--<blockquote>Capicola nisi flank sed minim sunt aliqua rump pancetta leberkas venison-->
+                                <!--eiusmod.-->
+                            <!--</blockquote>-->
+                            <!--<h3><a href="">- Abraham Josef</a></h3>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-md-3 col-sm-6">-->
+                <!--<div class="contact-info bottom">-->
+                    <!--<h2>Contacts</h2>-->
+                    <!--<address>-->
+                        <!--E-mail: <a href="mailto:someone@example.com">email@email.com</a> <br>-->
+                        <!--Phone: +1 (123) 456 7890 <br>-->
+                        <!--Fax: +1 (123) 456 7891 <br>-->
+                    <!--</address>-->
 
-                    <h2>Address</h2>
-                    <address>
-                        Unit C2, St.Vincent's Trading Est., <br>
-                        Feeder Road, <br>
-                        Bristol, BS2 0UY <br>
-                        United Kingdom <br>
-                    </address>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-12">
+                    <!--<h2>Address</h2>-->
+                    <!--<address>-->
+                        <!--Unit C2, St.Vincent's Trading Est., <br>-->
+                        <!--Feeder Road, <br>-->
+                        <!--Bristol, BS2 0UY <br>-->
+                        <!--United Kingdom <br>-->
+                    <!--</address>-->
+                <!--</div>-->
+            <!--</div>-->
+            <div class="col-md-12 col-sm-12 center-block">
                 <div class="contact-form bottom">
-                    <h2>Send a message</h2>
+                    <h2>五块钱的量</h2>
                     <form action="/newmoment" method="post" enctype="multipart/form-data">
-                        <a>标题</a><input name="title" class="form-control"/><br/>
-                        <a>内容</a> <label>
-                        <textarea name="content" class="form-control" rows="8"></textarea>
-                        </label><br/>
+                        <a>标题</a><input name="title" class="form-control"/>
+
+                        <!--<div id="result" name="result"></div>-->
+                        <a>内容</a>
+                        <textarea name="content" class="form-control" rows="20"></textarea>
+                        <a>上传图片</a>
+                        <input type="file" id="file" accept="image/*" name="logo"
+                               class="form-control" multiple="multiple"/>
+                        <input type="button" value="读取图像"  onclick="readAsDataURL()" class="form-control"/>
+                        <div id="result" class="portfolio-thumb">
+                        </div>
                         <a>标签</a>
+                        <div class="form-control">
                             <input type="radio" name="tag" value="开心">开心</label>
                             <input type="radio" name="tag" value="糗事">糗事</label>
                             <input type="radio" name="tag" value="郁闷">郁闷</label>
                             <input type="radio" name="tag" value="幸福">幸福</label>
                             <input type="radio" name="tag" value="梦想">梦想</label>
                             <input type="radio" name="tag" value="未来">未来</label> <br/>
-                        <input type="file" name="logo" class="form-control"/><br/>
-                        <input type="submit" value="注册" class="form-control"/>
+                        </div>
+                        <!--<a for="logo">选择头像</a>-->
+                        <!--<input type="file" accept="image/*" name="logo" class="form-control" id="logo"/><br/>-->
+
+                        <input type="submit" value="发布" class="form-control"/>
+                        <p>
+
+                        </p>
+
                     </form>
                 </div>
             </div>

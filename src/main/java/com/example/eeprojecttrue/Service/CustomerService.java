@@ -34,6 +34,12 @@ public class CustomerService  {
             return false;
     }
 
+    public boolean reSave(Customer customer)
+    {
+         customerRepository.save(customer);
+        return true;
+    }
+
     public boolean Login(Customer customer)
     {
         if(customerRepository.findByEmail(customer.getEmail())==null)

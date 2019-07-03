@@ -63,6 +63,25 @@ public class MomentService {
         return list;
     }
 
+    public List<Moment> GetByDateAndTag(int nums,int pages,String tag)
+    {
+
+        Pageable pageable =  new PageRequest(pages,nums, Sort.Direction.DESC,"date");
+        Page<Moment> page = momentRepository.findByTag(tag,pageable);
+        List<Moment> list=page.getContent();
+        return list;
+    }
+
+    public List<Moment> GetByDateAndContent(int nums,int pages,String string)
+    {
+
+        Pageable pageable =  new PageRequest(pages,nums, Sort.Direction.DESC,"date");
+        Page<Moment> page = momentRepository.findByContentStartingWith(string,pageable);
+        List<Moment> list=page.getContent();
+        return list;
+    }
+
+
     public void addComment(Moment moment, Comment comment)
     {
         Moment moment1=findById(moment.getId());
@@ -81,10 +100,22 @@ public class MomentService {
     {
         Moment moment=momentRepository.findById(id);
         moment.setAwesome(moment.getAwesome()+1);
+        momentRepository.save(moment);
+        return moment.getAwesome();
+    }
+
+    public int no_awesome(int id)
+    {
+        Moment moment=momentRepository.findById(id);
+        if(moment.getAwesome()>0)
+            moment.setAwesome(moment.getAwesome()-1);
+        momentRepository.save(moment);
         return moment.getAwesome();
     }
 //    public List<Moment> findByDateStartsWith(Date date)
 //    {
 //        return momentRepository.findByDateStartsWith(date);
 //    }
+
+
 }

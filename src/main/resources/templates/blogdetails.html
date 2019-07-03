@@ -23,7 +23,8 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="/images/ico/apple-touch-icon-57-precomposed.png">
     <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
-    <script th:inline="javascript">function retrieveGuests(comment_id,moment_id) {
+    <script th:inline="javascript">
+        function retrieveGuests(comment_id,moment_id) {
         var con="#searchSurname"+(comment_id+1);
         $.ajax({
             type:"POST",
@@ -31,18 +32,30 @@
             data:{content:$(con).val()},
             window:location.href = "/detail?moment_id="+moment_id
         });
-    }
+    }</script>
+    <script th:inline="javascript">
+        var flag=true;
+        function reImg(id) {
+            var con = "#searchSurname" + (id + 1);
+            var img = document.getElementById("like" + id);
+            var awe = document.getElementById("I_awe" + id);
+            if (flag) {
+                $.get("/MomentAwesome", {moment_id: id}, function (data) {
+                    img.src = "/images/2.png";
+                    awe.text = data;
+                    flag = false;
+                });
+            } else {
+                $.get("/MomentAwesome_sub", {moment_id: id}, function (data) {
+                    img.src = "/images/1.png";
+                    awe.text = data;
+                    flag = true;
+                });
 
-    stLight.options({
-        publisher: "7e8eb33b-fbe0-4915-9b93-09490e3d10df",
-        doNotHash: false,
-        doNotCopy: false,
-        hashAddressBar: false
-    });</script>
-</head><!--/head-->
-
-<body>
-<header id="header">
+            }
+        }
+    </script>
+<body><header id="header">
     <div class="container">
         <div class="row">
             <div class="col-sm-12 overflow">
@@ -75,40 +88,28 @@
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="index.html">Home</a></li>
-                    <li class="dropdown"><a href="#">Pages <i class="fa fa-angle-down"></i></a>
+                    <li><a href="index.html">主页</a></li>
+                    <li class="dropdown"><a href="#">页面 <i class="fa fa-angle-down"></i></a>
                         <ul role="menu" class="sub-menu">
-                            <li><a href="aboutus.html">About</a></li>
-                            <li><a href="aboutus2.html">About 2</a></li>
-                            <li><a href="service.html">Services</a></li>
-                            <li><a href="pricing.html">Pricing</a></li>
-                            <li><a href="contact.html">Contact us</a></li>
-                            <li><a href="contact2.html">Contact us 2</a></li>
-                            <li><a href="404.html">404 error</a></li>
-                            <li><a href="coming-soon.html">Coming Soon</a></li>
+                            <li><a href="aboutus.html">关于我们</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown active"><a href="blog.html">Blog <i class="fa fa-angle-down"></i></a>
+                    <li class="dropdown active"><a href="#">唠叨铺儿 <i class="fa fa-angle-down"></i></a>
                         <ul role="menu" class="sub-menu">
-                            <li><a href="blog.html">Blog Default</a></li>
-                            <li><a href="blogtwo.html">Timeline Blog</a></li>
-                            <li><a href="blogone.html">2 Columns + Right Sidebar</a></li>
-                            <li><a href="blogthree.html">1 Column + Left Sidebar</a></li>
-                            <li><a href="blogfour.html">Blog Masonary</a></li>
-                            <li><a class="active" href="blogdetails.html">Blog Details</a></li>
+                            <li><a href="blogthree.html">唠叨唠叨</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown"><a href="portfolio.html">Portfolio <i class="fa fa-angle-down"></i></a>
+                    <li class="dropdown"><a href="#">跳蚤地儿 <i class="fa fa-angle-down"></i></a>
                         <ul role="menu" class="sub-menu">
-                            <li><a href="portfolio.html">Portfolio Default</a></li>
-                            <li><a href="portfoliofour.html">Isotope 3 Columns + Right Sidebar</a></li>
-                            <li><a href="portfolioone.html">3 Columns + Right Sidebar</a></li>
-                            <li><a href="portfoliotwo.html">3 Columns + Left Sidebar</a></li>
-                            <li><a href="portfoliothree.html">2 Columns</a></li>
-                            <li><a href="portfolio-details.html">Portfolio Details</a></li>
+                            <li><a href="portfolio.html">二手市场</a></li>
                         </ul>
                     </li>
-                    <li><a href="shortcodes.html ">Shortcodes</a></li>
+                    <li><a href="#">设置</a>
+                        <ul role="menu" class="sub-menu">
+                            <li><a href="/re_register">重置</a>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
             <div class="search">
@@ -122,17 +123,36 @@
         </div>
     </div>
 </header>
-<!--/#header-->
 
 
-<section id="page-breadcrumb">
-    <div class="vertical-center sun">
+<!--<section id="page-breadcrumb">-->
+    <!--<div class="vertical-center sun">-->
+        <!--<div class="container">-->
+            <!--<div class="row">-->
+                <!--<div class="action">-->
+                    <!--<div class="col-sm-12" th:each="item : ${detail}">-->
+                        <!--<h1 class="title" th:text="${{item.name}}"></h1>-->
+                        <!--<p th:text="${{item.date}}"></p>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</section>-->
+
+<section id="action" class="responsive">
+    <div class="vertical-center">
         <div class="container">
             <div class="row">
-                <div class="action">
-                    <div class="col-sm-12" th:each="item : ${detail}">
+                <div class="action take-tour">
+                    <div class="col-sm-7 wow fadeInLeft" data-wow-duration="500ms" data-wow-delay="300ms" th:each="item : ${detail}">
                         <h1 class="title" th:text="${{item.name}}"></h1>
                         <p th:text="${{item.date}}"></p>
+                    </div>
+                    <div class="col-sm-5 text-center wow fadeInRight" data-wow-duration="500ms" data-wow-delay="300ms">
+                        <div class="tour-button">
+                            <a href="/blogthree" class="btn btn-common">回去看看</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -165,8 +185,23 @@
                                             <span class="post-author" th:text="${{item.tag}}">
                                             </span>
                                         </i></a></li>
-                                        <li><a href="#"><i class="fa fa-heart"></i>32 Love</a></li>
-                                        <li><a href="#"><i class="fa fa-comments"></i>3 Comments</a></li>
+                                        <li>
+                                            <ul>
+                                                <li><a ><img
+                                                        th:id="'like' + ${{item.id}}"
+                                                        src="/images/1.png" title="收藏"  height="15"
+                                                        width="15"
+                                                        th:onclick="|reImg(${item.id})|">
+                                                    <a th:id="'I_awe'+${{item.id}}"
+                                                       th:text="${{item.awesome}}"></a></a></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a th:href="@{/Moment/get(id=${{item.id}})}" ><i class="fa fa-comments"></i>
+                                                <span class="post-author" th:text="私聊">
+                                                    </span>
+                                            </a>
+                                        </li>
                                     </ul>
                                 </div>
                                 <div class="blog-share">
@@ -176,20 +211,10 @@
                                     <span class='st_pinterest_hcount'></span>
                                     <span class='st_email_hcount'></span>
                                 </div>
-                                <!--<div class="author-profile padding">-->
-                                    <!--<div class="row">-->
-                                        <!--<div class="col-sm-2">-->
-                                            <!--<img src="/images/blogdetails/1.png" alt="">-->
-                                        <!--</div>-->
-                                        <!--<div class="col-sm-10">-->
-                                            <!--<h3>Rodrix Hasel</h3>-->
-                                            <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod-->
-                                                <!--tempor incididunt ut labore et dolore magna aliq Ut enim ad minim-->
-                                                <!--veniam, quis nostrud exercitation ullamco laboris nisi</p>-->
-                                            <!--<span>Website:<a href="www.jooomshaper.com"> www.jooomshaper.com</a></span>-->
-                                        <!--</div>-->
-                                    <!--</div>-->
-                                <!--</div>-->
+                                <form th:action="@{/newcomment(moment_id=${{item.id}})}" method="post">
+                                    <input name="content" class="form-control"/><br/>
+                                    <input type="submit" class="btn btn-submit" value="评论">
+                                </form>
                                 <div class="response-area" id="resultsBlock">
                                     <h2 class="bold">Comments</h2>
                                     <ul class="media-list">
@@ -204,18 +229,10 @@
                                                             href="#" th:text="${{item2.Customer_name}}"></a></span>
                                                     <p th:text="${{item2.content}}"></p>
                                                     <ul class="nav navbar-nav post-nav">
-                                                        <li><a href="#" th:text="${{item2.date}}"><i
-                                                                class="fa fa-clock-o"></i></a></li>
+                                                        <li><a href="#" th:text="${{item2.date}}">
+                                                            <!--<i class="fa fa-clock-o"></i>-->
+                                                        </a></li>
                                                         <li>
-                                                            <!--<label th:for="searchSurname+(${item2.id}+1)"></label>-->
-
-                                                            <!--<button id="button" name="searchButton" class="form-control"-->
-                                                                    <!--th:onclick="retrieveGuests(([[${item2.id}]]),([[${item2.F_moment_id}]]))"-->
-                                                                    <!--type="button"-->
-                                                            <!--&gt;<i class="fa fa-reply"></i></button>-->
-                                                            <!--<input id="input" th:type="text" th:id-->
-                                                                    <!--="searchSurname+(${item2.id}+1)" class="form-control"-->
-                                                                   <!--name="content"/>-->
                                                         </li>
                                                     </ul>
                                                     <br/><br/>
@@ -236,14 +253,6 @@
                                                         </div>
                                                     </div>
                                                 </div >
-                                                <!--<input th:type="text" th:id ="searchSurname+(${item2.id}+1)" -->
-                                                       <!--name="content" class="form-control"/>-->
-                                                <!--<br />-->
-                                                <!--<label th:for="searchSurname+(${item2.id}+1)" th:text="#{search.label}">Search-->
-                                                    <!--label:</label>-->
-                                                <!--<button id="searchButton" name="searchButton"-->
-                                                        <!--th:onclick="retrieveGuests(([[${item2.id}]]),([[${item2.F_moment_id}]]))" type="button"-->
-                                                <!--&gt;Search button</button>-->
                                             </div>
                                             <div class="parrent"  th:each="item3 : ${item2.children}">
                                                 <ul class="media-list">
@@ -259,37 +268,18 @@
                                                                 </a></span>
                                                             <p th:text="${{item3.content}}"></p>
                                                             <ul class="nav navbar-nav post-nav">
-                                                                <li><a href="#"><i class="fa fa-clock-o"
-                                                                                   th:text="${{item3.date}}"></i></a></li>
+                                                                <li><a href="#" th:text="${{item2.date}}">
+                                                                    <!--<i class="fa fa-clock-o"></i>-->
+                                                                </a></li>
                                                             </ul>
                                                         </div>
                                                     </li>
                                                 </ul>
                                             </div>
                                         </li>
-                                        <!--<li class="media">-->
-                                            <!--<div class="post-comment">-->
-                                                <!--<a class="pull-left" href="#">-->
-                                                    <!--<img class="media-object" src="/images/blogdetails/4.png" alt="">-->
-                                                <!--</a>-->
-                                                <!--<div class="media-body">-->
-                                                    <!--<span><i class="fa fa-user"></i>Posted by <a-->
-                                                            <!--href="#">Endure</a></span>-->
-                                                    <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do-->
-                                                        <!--eiusmod tempor incididunt ut labore et dolore magna aliq Ut enim-->
-                                                        <!--ad minim veniam, quis nostrud exercitation ullamco laboris-->
-                                                        <!--nisi.</p>-->
-                                                    <!--<ul class="nav navbar-nav post-nav">-->
-                                                        <!--<li><a href="#"><i class="fa fa-clock-o"></i>February-->
-                                                            <!--11,2014</a></li>-->
-                                                        <!--<li><a href="#"><i class="fa fa-reply"></i>Reply</a></li>-->
-                                                    <!--</ul>-->
-                                                <!--</div>-->
-                                            <!--</div>-->
-                                        <!--</li>-->
-
                                     </ul>
                                 </div><!--/Response-area-->
+
                             </div>
                         </div>
                     </div>
@@ -298,137 +288,67 @@
             <div class="col-md-3 col-sm-5">
                 <div class="sidebar blog-sidebar">
                     <div class="sidebar-item  recent">
-                        <h3>Comments</h3>
-                        <div class="media">
-                            <div class="pull-left">
-                                <a href="#"><img src="/images/portfolio/project1.jpg" alt=""></a>
-                            </div>
-                            <div class="media-body">
-                                <h4><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit,</a></h4>
-                                <p>posted on 07 March 2014</p>
-                            </div>
-                        </div>
-                        <div class="media">
-                            <div class="pull-left">
-                                <a href="#"><img src="/images/portfolio/project2.jpg" alt=""></a>
-                            </div>
-                            <div class="media-body">
-                                <h4><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit,</a></h4>
-                                <p>posted on 07 March 2014</p>
-                            </div>
-                        </div>
-                        <div class="media">
-                            <div class="pull-left">
-                                <a href="#"><img src="/images/portfolio/project3.jpg" alt=""></a>
-                            </div>
-                            <div class="media-body">
-                                <h4><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit,</a></h4>
-                                <p>posted on 07 March 2014</p>
-                            </div>
-                        </div>
-                    </div>
                     <div class="sidebar-item categories">
-                        <h3>Categories</h3>
-                        <ul class="nav navbar-stacked">
-                            <li><a href="#">Lorem ipsum<span class="pull-right">(1)</span></a></li>
-                            <li class="active"><a href="#">Dolor sit amet<span class="pull-right">(8)</span></a></li>
-                            <li><a href="#">Adipisicing elit<span class="pull-right">(4)</span></a></li>
-                            <li><a href="#">Sed do<span class="pull-right">(9)</span></a></li>
-                            <li><a href="#">Eiusmod<span class="pull-right">(3)</span></a></li>
-                            <li><a href="#">Mockup<span class="pull-right">(4)</span></a></li>
-                            <li><a href="#">Ut enim ad minim <span class="pull-right">(2)</span></a></li>
-                            <li><a href="#">Veniam, quis nostrud <span class="pull-right">(8)</span></a></li>
+                        <br/>
+                        <h3>还有很多小唠叨</h3>
+                        <ul class="nav navbar-stacked" th:each="t:${title}">
+                            <li class="active"><a th:href="@{/detail(moment_id=${{t.id}})}" th:text="${{t.title}}">
+                                <span class="pull-right" th:text="(${{t.awesome}})">
+                            </span></a></li>
+                            <!--<li><a href="#">Adipisicing elit<span class="pull-right">(4)</span></a></li>-->
+                            <!--<li><a href="#">Sed do<span class="pull-right">(9)</span></a></li>-->
+                            <!--<li><a href="#">Eiusmod<span class="pull-right">(3)</span></a></li>-->
+                            <!--<li><a href="#">Mockup<span class="pull-right">(4)</span></a></li>-->
+                            <!--<li><a href="#">Ut enim ad minim <span class="pull-right">(2)</span></a></li>-->
+                            <!--<li><a href="#">Veniam, quis nostrud <span class="pull-right">(8)</span></a></li>-->
                         </ul>
                     </div>
                     <div class="sidebar-item tag-cloud">
-                        <h3>Tag Cloud</h3>
+                        <h3>标签</h3>
                         <ul class="nav nav-pills">
-                            <li><a href="#">Corporate</a></li>
-                            <li><a href="#">Joomla</a></li>
-                            <li><a href="#">Abstract</a></li>
-                            <li><a href="#">Creative</a></li>
-                            <li><a href="#">Business</a></li>
-                            <li><a href="#">Product</a></li>
+                            <li><a th:href="@{/MomentGetByTag(tag='开心')}">开心</a></li>
+                            <li><a th:href="@{/MomentGetByTag(tag='糗事')}">糗事</a></li>
+                            <li><a th:href="@{/MomentGetByTag(tag='郁闷')}">郁闷</a></li>
+                            <li><a th:href="@{/MomentGetByTag(tag='幸福')}">幸福</a></li>
+                            <li><a th:href="@{/MomentGetByTag(tag='梦想')}">梦想</a></li>
+                            <li><a th:href="@{/MomentGetByTag(tag='未来')}">未来</a></li>
+                            <li><a th:href="@{/blogthree}">所有</a></li>
                         </ul>
                     </div>
-                    <div class="sidebar-item popular">
-                        <h3>Latest Photos</h3>
-                        <ul class="gallery">
-                            <li><a href="#"><img src="/images/portfolio/popular1.jpg" alt=""></a></li>
-                            <li><a href="#"><img src="/images/portfolio/popular2.jpg" alt=""></a></li>
-                            <li><a href="#"><img src="/images/portfolio/popular3.jpg" alt=""></a></li>
-                            <li><a href="#"><img src="/images/portfolio/popular4.jpg" alt=""></a></li>
-                            <li><a href="#"><img src="/images/portfolio/popular5.jpg" alt=""></a></li>
-                            <li><a href="#"><img src="/images/portfolio/popular1.jpg" alt=""></a></li>
-                        </ul>
-                    </div>
+                        <div class="sidebar-item popular">
+                            <h3>唠叨婆婆榜</h3>
+                            <ul class="gallery"  th:each="img_i : ${img}">
+                                <li><a href="#"><img th:src="@{/Customer/image/get(id=${{img_i}})}"
+                                                     id="newest_img" alt=""></a></li>
+                            </ul>
+                            <br/>
+                        </div>
                 </div>
             </div>
         </div>
     </div>
+    </div>
 </section>
 <!--/#blog-->
+
 
 <footer id="footer">
     <div class="container">
         <div class="row">
-            <div class="col-sm-12 text-center bottom-separator">
-                <img src="/images/home/under.png" class="img-responsive inline" alt="">
-            </div>
-            <div class="col-md-6 col-sm-6">
-                <div class="testimonial bottom">
-                    <h2>Testimonial</h2>
-                    <div class="media">
-                        <div class="pull-left">
-                            <a href="#"><img src="/images/home/profile1.png" alt=""></a>
-                        </div>
-                        <div class="media-body">
-                            <blockquote>Nisi commodo bresaola, leberkas venison eiusmod bacon occaecat labore tail.
-                            </blockquote>
-                            <h3><a href="#">- Jhon Kalis</a></h3>
-                        </div>
-                    </div>
-                    <div class="media">
-                        <div class="pull-left">
-                            <a href="#"><img src="/images/home/profile2.png" alt=""></a>
-                        </div>
-                        <div class="media-body">
-                            <blockquote>Capicola nisi flank sed minim sunt aliqua rump pancetta leberkas venison
-                                eiusmod.
-                            </blockquote>
-                            <h3><a href="">- Abraham Josef</a></h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-5 col-sm-6">
+            <div class="col-md-3 col-sm-6">
                 <div class="contact-info bottom">
-                    <h2>Contacts</h2>
-                    <address>
-                        E-mail: <a href="mailto:someone@example.com">email@email.com</a> <br>
-                        Phone: +1 (123) 456 7890 <br>
-                        Fax: +1 (123) 456 7891 <br>
-                    </address>
-
-                    <h2>Address</h2>
-                    <address>
-                        Unit C2, St.Vincent's Trading Est., <br>
-                        Feeder Road, <br>
-                        Bristol, BS2 0UY <br>
-                        United Kingdom <br>
-                    </address>
+                    <button value="哈哈哈"></button>
                 </div>
             </div>
-            <div class="col-sm-12">
-                <div class="copyright-text text-center">
-                    <p>&copy; Your Company 2014. All Rights Reserved.</p>
-                    <p>Designed by <a target="_blank" href="http://www.themeum.com">Themeum</a></p>
+            <div class="col-md-4 col-sm-12">
+                <div class="contact-form bottom">
+                    <div class="form-group">
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </footer>
-<!--/#footer-->
 
 
 <script type="text/javascript" src="/js/jquery.js"></script>

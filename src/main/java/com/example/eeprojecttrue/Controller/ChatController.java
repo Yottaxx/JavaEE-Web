@@ -14,13 +14,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.*;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 
 @Controller
@@ -32,13 +30,13 @@ public class ChatController {
     private CustomerService customerService;
     @GetMapping(value = {"/blogthree.html"})
     public String ChatHtml(HttpSession session,Model model){
-        ReMoment(-1,model,0);
+        ReMoment(-1,model,0,null);
         return "blogthree";
     }
 
     @GetMapping(value = {"/blogthree"})
     public String Chat(HttpSession session,Model model){
-        ReMoment(-1,model,0);
+        ReMoment(-1,model,0,null);
         return "blogthree";
     }
 
@@ -58,20 +56,22 @@ public class ChatController {
             momentService.Save(moment);
             moment= (Moment) momentService.findById(moment.getId());
             customerService.addMoments(customer,moment);
-
-            List<Moment> list=momentService.GetByDate(10,0);
-          //  List<Moment> list=momentService.findByDateStartsWith(new Date());
-
-            C_M []c_ms=new C_M[list.size()];
-            Moment temp;
-            for(int i=0;i<list.size();i++)
-            {
-                temp= list.get(i);
-                c_ms[i]=new C_M(temp.getCustomer(),temp);
-            }
-
-            model.addAttribute("data",c_ms);
+            ReMoment(-1,model,0,null);
             return "/blogthree";
+
+//            List<Moment> list=momentService.GetByDate(10,0);
+//          //  List<Moment> list=momentService.findByDateStartsWith(new Date());
+//
+//            C_M []c_ms=new C_M[list.size()];
+//            Moment temp;
+//            for(int i=0;i<list.size();i++)
+//            {
+//                temp= list.get(i);
+//                c_ms[i]=new C_M(temp.getCustomer(),temp);
+//            }
+//
+//            model.addAttribute("data",c_ms);
+//            return "/blogthree";
         }
         else
             return "newmoment";
@@ -119,19 +119,26 @@ public class ChatController {
 
         int a= (int) httpSession.getAttribute("time");
         int pages=(int) httpSession.getAttribute("page");
-        ReMoment(a,model,pages);
+        ReMoment(a,model,pages,null);
+
+
+
         return "/blogthree";
     }
 
-    private void ReMoment(int time, Model model,int pages)
+    private void ReMoment(int time, Model model,int pages,String tag)
     {
         Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.DATE, time); //得到前一天
         Date date1 = calendar.getTime();
-
-        List<Moment> list=momentService.GetByDate(10,pages);
+        List<Moment> list;
+        if(tag==null) {
+            list=momentService.GetByDate(10,pages);
+        } else {
+            list=momentService.GetByDateAndTag(10,pages,tag);
+        }
         //  List<Moment> list=momentService.findByDateStartsWith(new Date());
-
+        //朋友圈信息
         C_M []c_ms=new C_M[list.size()];
         Moment temp;
         for(int i=0;i<list.size();i++)
@@ -140,8 +147,17 @@ public class ChatController {
             if(temp.getDate().after(date1))
                 c_ms[i]=new C_M(temp.getCustomer(),temp);
         }
-
+        //最近用户图片id
+        List<Integer> integers = new LinkedList<>();
+        List<Moment> moments=momentService.GetByDate(6,0);
+        for(int i=0;i<moments.size();i++)
+        {
+            integers.add(moments.get(i).getCustomer().getId());
+        }
         model.addAttribute("data",c_ms);
+        System.out.println("detail");
+        model.addAttribute("img",integers);
+
     }
 
 
@@ -191,7 +207,6 @@ public class ChatController {
 //            os.write(buffer);
 //            os.flush();
 //            os.close();
-
             return new ResponseEntity<>(data, HttpStatus.OK);
 
     }
@@ -204,5 +219,74 @@ public class ChatController {
         byte[] data=momentService.findById(id).getLogo();
         return new ResponseEntity<>(data, HttpStatus.OK);
 
+    }
+
+    @GetMapping(value = "Moment/title/get")
+    public ResponseEntity<String> Tile_Moment(int id, HttpServletResponse res)
+    {
+        res.setCharacterEncoding("UTF-8");
+        String title=momentService.findById(id).getTitle();
+        return new ResponseEntity<>(title, HttpStatus.OK);
+
+    }
+
+    @GetMapping(value = "/MomentGetByTag")
+    public String MomentOperation_typeTag( String tag,Model model)
+    {
+        ReMoment(-1,model,0,tag);
+        return "blogthree";
+    }
+
+    @GetMapping(value = "/MomentAwesome")
+    public @ResponseBody int MomentOperation_typeTag(int moment_id)
+    {
+        System.out.println(moment_id);
+       return  momentService.awesome(moment_id);
+
+    }
+
+    @GetMapping(value = "/MomentAwesome_sub")
+    public @ResponseBody int MomentOperation_type_awe(int moment_id)
+    {
+        System.out.println(moment_id);
+        return  momentService.no_awesome(moment_id);
+
+    }
+
+
+    @GetMapping(value = "/MomentGetByContent")
+    public String MomentOperation_typeContent( String content,Model model)
+    {
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DATE, -1); //得到前一天
+        Date date1 = calendar.getTime();
+        List<Moment> list;
+        System.out.println(content);
+        if(content==null) {
+            list=momentService.GetByDate(10,0);
+        } else {
+            list=momentService.GetByDateAndContent(10,0,content);
+        }
+        //  List<Moment> list=momentService.findByDateStartsWith(new Date());
+        //朋友圈信息
+        C_M []c_ms=new C_M[list.size()];
+        Moment temp;
+        for(int i=0;i<list.size();i++)
+        {
+            temp= list.get(i);
+            if(temp.getDate().after(date1))
+                c_ms[i]=new C_M(temp.getCustomer(),temp);
+        }
+        //最近用户图片id
+        List<Integer> integers = new LinkedList<>();
+        List<Moment> moments=momentService.GetByDate(6,0);
+        for(int i=0;i<moments.size();i++)
+        {
+            integers.add(moments.get(i).getCustomer().getId());
+        }
+        model.addAttribute("data",c_ms);
+        System.out.println("detail");
+        model.addAttribute("img",integers);
+        return "blogthree";
     }
 }

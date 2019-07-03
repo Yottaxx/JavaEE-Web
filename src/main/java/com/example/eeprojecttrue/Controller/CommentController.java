@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 
 @Controller
@@ -43,6 +44,15 @@ public class CommentController {
         model.addAttribute("detail",new C_M(customer,moment));
         List<Comment> comments=moment.getComments();
         model.addAttribute("comments",comments);
+        List<Moment> moments=momentService.GetByDate(6,0);
+        List<Integer> integers = new LinkedList<>();
+        for(int i=0;i<moments.size();i++)
+        {
+            integers.add(moments.get(i).getCustomer().getId());
+        }
+        System.out.println("detail");
+        model.addAttribute("img",integers);
+        model.addAttribute("title",moments);
         return "blogdetails";
     }
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -177,25 +177,28 @@
                 <div class="contact-form bottom">
                     <div class="col-md-12">
                     <div  class="portfolio-thumb fadeInLeft col-md-5"  >
-                        <h2>注册</h2>
+                        <h2>重置</h2>
                         <a value="读取图像"  onclick="readAsDataURL()">显示头像</a>
                         <img src="/images/home/under.png" class="img-responsive inline" alt="">
                     </div>
                     <div id="result" class="portfolio-thumb col-md-5 fadeInRight">
                         <br/>
                     </div>
-                    </div>
-                    <form action="/register" method="post" enctype="multipart/form-data">
-                        <a>Email:</a><input name="email" class="form-control"/><br/>
-                        <a>Password:</a><input type="password" name="password" class="form-control"/><br/>
-                        <a>Name:</a><input name="name" class="form-control"/><br/>
+                    </div >
+                    <div th:each="t:${data}">
+                    <form action="/re_register" method="post" enctype="multipart/form-data" >
+                        <a>重置密码:</a><input type="password" name="password" class="form-control"
+                                           th:value="${{t.password}}"/><br/>
+                        <a >重置名字:</a><input name="name"  th:value="${{t.name}}"
+                                            class="form-control"/><br/>
                         <!--<input type="file" name="logo" class="form-control"/><br/>-->
-                        <a>上传头像</a>
+                        <a>重置头像</a>
                         <input type="file" id="file" accept="image/*" name="logo"
-                               class="form-control" multiple="multiple"/><br/>
+                               class="form-control" multiple="multiple" value="${{t.logo}}"/><br/>
 
-                        <input type="submit" value="注册" class="form-control"/>
+                        <input type="submit" value="重置" class="form-control"/>
                     </form>
+                    </div>
                 </div>
             </div>
             <div class="col-md-4 col-sm-12 ">

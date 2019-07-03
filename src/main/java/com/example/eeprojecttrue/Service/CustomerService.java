@@ -4,12 +4,14 @@ import com.example.eeprojecttrue.Entity.Customer;
 import com.example.eeprojecttrue.Entity.Moment;
 import com.example.eeprojecttrue.Repository.CustomerRepository;
 import com.example.eeprojecttrue.Repository.MomentRepository;
+import com.example.eeprojecttrue.Service.Cluster.Clustering;
+import com.example.eeprojecttrue.Service.Cluster.KMeansClustering;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class CustomerService  {
@@ -18,6 +20,8 @@ public class CustomerService  {
     private CustomerRepository customerRepository;
     @Autowired
     private MomentRepository momentRepository;
+
+    List<List<Customer>> result;
     public boolean Save(Customer customer)
     {
         Customer customer1=customerRepository.findByEmail(customer.getEmail());
@@ -85,5 +89,35 @@ public class CustomerService  {
         }
         else
             moments.add(moment);
+    }
+
+    public void Cluster()
+    {
+        int K = 5;
+        KMeansClustering xyCluster = new Clustering();
+        List<Customer> customers=findAll();
+        for(Customer customer:customers) {
+            xyCluster.addRecord(customer);
+        }
+        xyCluster.setK(5);
+        long a = System.currentTimeMillis();
+        List<List<Customer>> cresult = xyCluster.clustering();
+        long b = System.currentTimeMillis();
+        System.out.println("耗时：" + (b - a) + "ms");
+
+        result=cresult;
+    }
+
+    public List<Customer> inCluster(Customer customer)
+    {
+        Cluster();
+        for(List<Customer> lists:result)
+        {
+            if(lists.contains(customer))
+                return lists;
+        }
+        List<Customer> list=new LinkedList<>();
+        list.add(customer);
+        return list;
     }
 }

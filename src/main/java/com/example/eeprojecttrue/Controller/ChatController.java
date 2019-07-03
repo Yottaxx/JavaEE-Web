@@ -289,4 +289,47 @@ public class ChatController {
         model.addAttribute("img",integers);
         return "blogthree";
     }
+
+
+    @GetMapping(value = "/MomentGetByLike")
+    public String MomentOperation_typeContent(Model model,HttpSession session)
+    {
+        Customer customer= (Customer) session.getAttribute("customer");
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DATE, -1); //得到前一天
+        Date date1 = calendar.getTime();
+        List<Moment> list=new LinkedList<>();
+
+        List<Customer> customers=customerService.inCluster(customer);
+        List<Moment> small_list;
+
+        for(Customer cus:customers)
+        {
+            small_list=momentService.findByCustomerId(cus.getId());
+            for(Moment moment:small_list)
+            {
+                list.add(moment);
+            }
+        }
+
+        C_M []c_ms=new C_M[list.size()];
+        Moment temp;
+        for(int i=0;i<list.size();i++)
+        {
+            temp= list.get(i);
+            if(temp.getDate().after(date1))
+                c_ms[i]=new C_M(temp.getCustomer(),temp);
+        }
+        //最近用户图片id
+        List<Integer> integers = new LinkedList<>();
+        List<Moment> moments=momentService.GetByDate(6,0);
+        for(int i=0;i<moments.size();i++)
+        {
+            integers.add(moments.get(i).getCustomer().getId());
+        }
+        model.addAttribute("data",c_ms);
+        System.out.println("detail");
+        model.addAttribute("img",integers);
+        return "blogthree";
+    }
 }

@@ -1,32 +1,61 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>多图预览</title>
-</head>
-<script>
-    var result=document.getElementById("result");
-    var file=document.getElementById("file");
-
-    function readAsDataURL(){
-
-        var file = document.getElementById("file").files;
-        var result=document.getElementById("result");
-
-        for(i = 0; i< file.length; i ++) {
-            var reader    = new FileReader();
-            reader.readAsDataURL(file[i]);
-            reader.onload=function(e){
-                //多图预览
-                result.innerHTML = result.innerHTML + '<img src="' + this.result +'" alt="" />';
-            }
-
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>无标题文档</title>
+    <script type="text/javascript">
+        //实例：随机显示小星星
+        /*
+            (1)网页加载完成，背景色为黑色
+            (2)创建图片节点，并追加到body父节点下
+            (3)定时器
+            (4)星星随机大小
+            (5)星星随机定位
+            (6)单击星星，星星消失。
+        */
+        window.onload = function()
+        {
+            document.body.bgColor = "#000";
+            //定时器开关
+            window.setInterval("start2()",1000);
         }
+        function start2()
+        {
+            //创建图片节点
+            var imgObj = document.createElement("img");
+            //追加到body节点
+            document.body.appendChild(imgObj);
+            //添加src属性
+            imgObj.setAttribute("src","images/1.png");
+            //添加width属性
+            var imgWidth = getRandom(15,85);
+            imgObj.setAttribute("width",imgWidth);
+            //添加style属性
+            var winWidth = window.innerWidth ? window.innerWidth : document.documentElement.clientWidth;
+            var winHeight = window.innerHeight ? window.innerHeight : document.documentElement.clientHeight;
+            var x = getRandom(0,winWidth);
+            var y = getRandom(0,winHeight);
+            imgObj.setAttribute("style","position:absolute;left:"+x+"px;top:"+y+"px");
+            //单击删除星星
+            imgObj.setAttribute("onclick","removeImg(this)");
+        }
+        function removeImg(imgObj)
+        {
+            //删除子节点img
+            document.body.removeChild(imgObj);
+        }
+        function getRandom(min,max)
+        {
+            var random = Math.random()*(max-min)+min;
+            //向下取整
+            random = Math.floor(random);
+            //返回值
+            return random;
+        }
+    </script>
+</head>
 
-    }
-
-</script>
-<p>
-    <label>请选择一个文件：</label>
-    <input type="file" id="file" multiple="multiple" />
-    <input type="button" value="读取图像" onclick="readAsDataURL()" />
-</p>
-<div id="result" name="result"></div>  
+<body>
+</body>
+</html>

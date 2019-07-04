@@ -76,7 +76,7 @@ public class MomentService {
     {
 
         Pageable pageable =  new PageRequest(pages,nums, Sort.Direction.DESC,"date");
-        Page<Moment> page = momentRepository.findByContentStartingWith(string,pageable);
+        Page<Moment> page = momentRepository.findByContentStartsWith(string,pageable);
         List<Moment> list=page.getContent();
         return list;
     }

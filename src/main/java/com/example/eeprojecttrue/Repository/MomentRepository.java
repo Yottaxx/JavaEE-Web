@@ -21,7 +21,7 @@ public interface MomentRepository extends CrudRepository<Moment,Integer> {
     List<Moment> findByCustomerId(int customer_id);
     List<Moment> findByTag(String tag);
     Page<Moment> findByTag(String tag,Pageable pageable);
-    Page<Moment> findByContentStartingWith(String string,Pageable pageable);
+    Page<Moment> findByContentStartsWith(String string,Pageable pageable);
     @Query(value = "select e from Moment e ORDER BY e.date desc")
     List<Moment> findBySortDate(Pageable page);
 

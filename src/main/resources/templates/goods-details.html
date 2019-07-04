@@ -1,0 +1,361 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>解忧杂货店 | 跳蚤市场</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/lightbox.css" rel="stylesheet"> 
+    <link href="css/animate.min.css" rel="stylesheet"> 
+	<link href="css/main.css" rel="stylesheet">
+	<link href="css/responsive.css" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+	    <script src="js/html5shiv.js"></script>
+	    <script src="js/respond.min.js"></script>
+    <![endif]-->       
+    <link rel="shortcut icon" href="images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+    
+    
+    <style type="text/css">
+      .typechange{
+         display: inline-block;
+      }
+      
+      .size-little{
+         height: 261px!important;
+         width: 269px!important;
+      }
+      .size-large{
+         height: 577px!important;
+         width: 552px!important;
+      }
+    </style>
+    
+</head><!--/head-->
+
+<body>
+	<header id="header">      
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 overflow">
+                   <div class="social-icons pull-right">
+                        <ul class="nav nav-pills">
+                            <li><a href=""><i class="fa fa-facebook"></i></a></li>
+                            <li><a href=""><i class="fa fa-twitter"></i></a></li>
+                            <li><a href=""><i class="fa fa-google-plus"></i></a></li>
+                            <li><a href=""><i class="fa fa-dribbble"></i></a></li>
+                            <li><a href=""><i class="fa fa-linkedin"></i></a></li>
+                        </ul>
+                    </div> 
+                </div>
+             </div>
+        </div>
+        <div class="navbar navbar-inverse" role="banner">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                    <a class="navbar-brand" href="index.html">
+                        <h1><img src="images/logo.png" alt="logo"></h1>
+                    </a>
+                    
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="index.html">主页</a></li>
+                        <li class="dropdown"><a href="second-hand.html">跳蚤市场 <i class="fa fa-angle-down"></i></a>
+                            <ul role="menu" class="sub-menu">
+                                <li><a class="active" href="#">商品细节</a></li>
+                                <li><a href="secone-hand-issue.html">发布</a></li>
+                              <!--   <li><a href="second-hand-issue.html">我的发布</a></li>
+                                <li><a href="second-hand-issue.html">我的购买</a></li>
+                                <li><a href="second-hand-issue.html">我的收藏</a></li>
+                                <li><a href="portfoliothree.html">2 Columns</a></li>
+                                <li><a href="portfolio-details.html">Portfolio Details</a></li> -->  
+                            </ul>
+                        </li>                    
+                        <li class="dropdown"><a href="blog.html">交友广场 <i class="fa fa-angle-down"></i></a>
+                            <ul role="menu" class="sub-menu">
+                                <li><a href="blog.html">Blog Default</a></li>
+                                <li><a href="blogtwo.html">Timeline Blog</a></li>
+                                <li><a href="blogone.html">2 Columns + Right Sidebar</a></li>
+                                <li><a href="blogthree.html">1 Column + Left Sidebar</a></li>
+                                <li><a href="blogfour.html">Blog Masonary</a></li>
+                                <li><a href="blogdetails.html">Blog Details</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown active"><a href="portfolio.html">劳务工厂 <i class="fa fa-angle-down"></i></a>
+                            <ul role="menu" class="sub-menu">
+                                <li><a href="portfolio.html">Portfolio Default</a></li>
+                                <li><a href="portfoliofour.html">Isotope 3 Columns + Right Sidebar</a></li>
+                                <li><a href="portfolioone.html">3 Columns + Right Sidebar</a></li>
+                                <li><a href="portfoliotwo.html">3 Columns + Left Sidebar</a></li>
+                                <li><a href="portfoliothree.html">2 Columns</a></li>
+                                <li><a class="active" href="portfolio-details.html">Portfolio Details</a></li>
+                            </ul>
+                        </li>                         
+                        <li><a href="shortcodes.html ">我的</a></li>                    
+                    </ul>
+                </div>
+                <div class="search">
+                    <form role="form">
+                        <i class="fa fa-search"></i>
+                        <div class="field-toggle">
+                            <input type="text" class="search-form" autocomplete="off" placeholder="Search">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--/#header-->
+
+
+    <section id="page-breadcrumb">
+        <div class="vertical-center sun">
+             <div class="container">
+                <div class="row">
+                    <div class="action">
+                        <div class="col-sm-12">
+                            <h1 class="title">解忧杂货店</h1>
+                            <p>grief grocery store</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+   </section>
+    <!--/#action-->
+
+    <section id="portfolio-information" class="padding-top">
+    <div class="col-sm-12 text-center bottom-separator">
+                    <img src="images/home/under.png" class="img-responsive inline" alt="">
+                </div>
+      <div th:each="item2 : ${data}">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                <!-- 552 x 577图片大小 -->
+                <img th:src="@{/LGoods/image/get(id=${{item2.id}})}" height="577" width="552" class="img-responsive" alt="">
+                  <!--    <img th:src="@{'/images/goods'+${item2.portrait}}" height="577" width="552" class="img-responsive" alt="">    -->
+                  
+                </div>
+                <div class="col-sm-6">
+                    <div class="project-name overflow">
+                      
+                        <h2 class="bold"><span th:text="${{item2.name}}"></span> </h2>
+                        <hr/>
+                        <ul class="nav navbar-nav navbar-default">
+                            <li><a><i class="fa fa-tag"></i>发布人:<span th:text="${{customerName}}"></span></a></li>                        
+                            <li><a><i class="fa fa-clock-o"></i>发布时间:<span th:text="${{time}}"></span></a></li>
+                                                   
+                        </ul>
+                       
+                    </div>
+                    <div class="project-info overflow">
+                        <h3>商品描述</h3>
+                        <p th:text="${{item2.describe1}}"></p>
+                        <ul class="elements">
+                            <li><i class="fa fa-angle-right"></i>商品价格:<span th:text="'  '+'¥' + ${{item2.price}}"></span></li>
+                            <li><i class="fa fa-angle-right"></i>在售情况:<span th:text="'  '+${item2.isOnSale==1?'在售':'已下架'}"></span></li>
+                            <li><i class="fa fa-angle-right"></i>区域:<span th:text="${item2.area}"></span></li>
+                        </ul>
+                    </div>
+                    <div class="skills overflow">
+                    <hr/>
+                        <h3>解忧杂货店:奇货可居</h3>
+                        
+                        <p>人的心声是绝对不能无视的,愿你随心而为</p>
+                        <ul class="nav navbar-nav navbar-default">
+                            <li><a><i class="fa fa-check-square"></i>快乐</a></li>
+                            <li><a ><i class="fa fa-check-square"></i>幸福</a></li>
+                            <li><a><i class="fa fa-check-square"></i>随性</a></li>
+                            <li><a><i class="fa fa-check-square"></i>坚强</a></li>
+                        </ul>
+                    </div>
+                    <hr/>
+                    <div class="client overflow">
+                        <h3>Hey~</h3>
+                        <ul class="nav navbar-nav navbar-default">
+                         <!--     <li><a th:href="'/index?userId='+${customer.email}+'&password='+${customer.password}" th:onclick="|login(${customer.email},${customer.password})|"><i class="fa fa-bolt"></i>想和他聊一聊</a></li>
+                         -->
+                         
+                         <li><a th:href="'/index?userId='+${customer.email}+'&password='+${customer.password}" ><i class="fa fa-bolt"></i>想和他聊一聊</a></li>
+                        </ul>
+                    </div>
+                    <div class="live-preview">
+                        <a href="purchase.html" class="btn btn-common uppercase" title="点击购买">购买</a>
+                    <a  class="btn btn-common uppercase" th:onclick="|like(${isCollect},${item2.id},${customer.id})|" id="collect"  th:text=" ${isCollect}==1? '已收藏':'收藏' " th:title=" ${isCollect}==1? '点击取消收藏' :' 点击收藏' "><span ></span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+       </div>
+    </section>
+    
+    <script type="text/javascript">
+    function like(isCollect,id,customerId){
+    	
+    	var myspan = document.getElementById("collect");
+    	if(myspan.text == "已收藏"){//原来是已收藏的状态，点击之后要变成收藏
+    		//alert("isCollect是1");
+    		myspan.text = "收藏";
+    		myspan.title = "点击收藏";
+    		$.get("/second-hand-like",{id : id,customerId:customerId,isDelete:1},function(data){
+			  });
+    	}
+    	else if(myspan.text == "收藏"){
+    		//alert("isCollect是0");
+    		myspan.text = "已收藏";
+    		myspan.title = "点击取消收藏";
+    		$.get("/second-hand-like",{id : id,customerId:customerId,isDelete:0},function(data){
+			  });
+    	}
+    }
+    
+
+    /**
+     * 登陆聊天 将账号和密码都传入进数据库
+     */
+    function login(email,password) {
+    	alter("email" + eamil + "  password:" + password);
+        location.href = '/index?userId='+email+'&password='+password;
+    }
+    /**
+     * 使用ENTER登陆
+     */
+    document.onkeydown = function (event) {
+        var e = event || window.event || arguments.callee.caller.arguments[0];
+        e.keyCode === 13 && login();
+    };
+</script>
+     <!--/#portfolio-information-->
+
+    <section id="related-work" class="padding-top padding-bottom">
+        <div class="container">
+            <div class="row">
+                <h1 class="title text-center">解忧推荐</h1>
+                <p class="title text-center">随风 随意 随心</p>
+                <div th:each="item3 : ${randomGoods}">
+                <div class="col-sm-3">              
+                    <div class="portfolio-wrapper">
+                        <div class="portfolio-single">
+                            <div class="portfolio-thumb">
+                                 <img th:src="@{/LGoods/image/get(id=${{item3.id}})}" class="img-responsive size-little" alt="">  
+                            </div>
+                            <div class="portfolio-view">
+                                <ul class="nav nav-pills">
+                                    <li><a th:href="@{'/goods-details'+${item3.id}+'.html'}" title="查看详情"><i class="fa fa-link"></i></a></li>  
+                              <!--       <li><a th:href="@{'images/goods'+${item3.portrait}}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                                -->
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="portfolio-info ">
+                            <span th:text="${{item3.name}}"></span>
+                            <span th:text="'￥' +${{item3.price}}"></span>
+                        </div>
+                    </div>            
+                </div>
+               </div>
+            </div>
+        </div>
+    </section>
+    <!--/#related-work-->
+
+
+    <footer id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 text-center bottom-separator">
+                    <img src="images/home/under.png" class="img-responsive inline" alt="">
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="testimonial bottom">
+                        <h2>解忧说</h2>
+                        <div class="media">
+                            <div class="pull-left">
+                                <a href="#"><img src="images/home/sun.png" alt=""></a>
+                            </div>
+                            <div class="media-body">
+                                <blockquote>无论现在多么不开心，你要相信，明天会比今天更好.</blockquote>
+                                <h3><a href="#">- 东野圭吾</a></h3>
+                            </div>
+                         </div>
+                        <div class="media">
+                            <div class="pull-left">
+                                <a href="#"><img src="images/home/house.png" alt=""></a>
+                            </div>
+                            <div class="media-body">
+                                <blockquote>即使分隔两地，我们的心也会永远在一起.</blockquote>
+                                <h3><a href="">- 东野圭吾</a></h3>
+                            </div>
+                        </div>   
+                    </div> 
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="contact-info bottom">
+                        <h2>联系我们</h2>
+                        <address>
+                        E-mail: <a href="www.baidu.cn">解忧@email.com</a> <br> 
+                        Phone: +10086 (11) <br> 
+                        QQ: + 123456<br> 
+                        </address>
+
+                        <h2>来信请寄</h2>
+                        <address>
+                        重庆市, <br> 
+                        沙坪坝区, <br> 
+                        重庆大学, <br> 
+                        计算机学院 <br> 
+                        </address>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 col-sm-12">
+                    <div class="contact-form bottom">
+                        <h2>愿</h2>                        
+                            
+                                <blockquote>吾心安处即吾乡</blockquote>                            
+                                <blockquote>漫漫人生路,唯愿你随心之所向</blockquote>
+                            
+                            
+                          
+                           
+                        
+                    </div>
+                </div>
+                 
+                <div class="col-sm-12">
+                    <div class="copyright-text text-center">
+                        <p>&copy; ZBYL. All Rights Reserved.</p>
+                        <p>Designed by <a target="_blank" href="http://www.cqu.edu.cn">CQU-CS-ZBYL</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--/#footer-->
+
+
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/lightbox.min.js"></script>
+    <script type="text/javascript" src="js/wow.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>  
+</body>
+</html>

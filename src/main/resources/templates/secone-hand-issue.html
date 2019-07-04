@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>解忧杂货铺  | 二手市场</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/lightbox.css" rel="stylesheet">  
+    <link href="css/animate.min.css" rel="stylesheet"> 
+	<link href="css/main.css" rel="stylesheet">
+	<link href="css/responsive.css" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+	    <script src="js/html5shiv.js"></script>
+	    <script src="js/respond.min.js"></script>
+    <![endif]-->       
+    <link rel="shortcut icon" href="images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+    
+    <style>
+    .contact-form-div
+    {
+         width:300px;
+         height:150px;
+         position:absolute;
+         left:200px;
+        
+    }
+    .form-control-title
+    {
+         width:100px;
+         height:50px;
+         
+    }
+    .form-control-select
+    {
+      width:60px;
+      height:40px
+    }
+    .form-control-describe
+    {
+    width:500px;
+    height:200px
+         
+    }
+    </style>
+
+</head><!--/head-->
+
+<body>
+
+	<header id="header">      
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 overflow">
+                   <div class="social-icons pull-right">
+                        <ul class="nav nav-pills">
+                            <li><a href=""><i class="fa fa-facebook"></i></a></li>
+                            <li><a href=""><i class="fa fa-twitter"></i></a></li>
+                            <li><a href=""><i class="fa fa-google-plus"></i></a></li>
+                            <li><a href=""><i class="fa fa-dribbble"></i></a></li>
+                            <li><a href=""><i class="fa fa-linkedin"></i></a></li>
+                        </ul>
+                    </div> 
+                </div>
+             </div>
+        </div>
+        <div class="navbar navbar-inverse" role="banner">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                    <a class="navbar-brand" href="index.html">
+                        <h1><img src="images/logo.png" alt="logo"></h1>
+                    </a>
+                    
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="index.html">主页</a></li>
+                        <!-- 二手页面 -->
+                        <li class="dropdown active"><a href="second-hand.html">二手市场 <i class="fa fa-angle-down"></i></a>
+                            <ul role="menu" class="sub-menu">
+                                <!-- 二手市场栏下的功能框 -->
+                                <li><a class="active" href="secone-hand-issue.html">发布</a></li>
+                                <!-- <li><a href="portfoliofour.html">Isotope 3 Columns + Right Sidebar</a></li>
+                                <li><a href="portfolioone.html">3 Columns + Right Sidebar</a></li>
+                                <li><a href="portfoliotwo.html">3 Columns + Left Sidebar</a></li>
+                                <li><a href="portfoliothree.html">2 Columns</a></li>
+                                <li><a href="portfolio-details.html">Portfolio Details</a></li> --> 
+                            </ul>
+                        </li>    
+
+                               <!-- 以下为别的页面 -->
+
+                        <li class="dropdown"><a href="#">交友平台 <i class="fa fa-angle-down"></i></a>
+                            <ul role="menu" class="sub-menu">
+                                <li><a href="aboutus.html">About</a></li>
+                                <li><a href="aboutus2.html">About 2</a></li>
+                                <li><a href="service.html">Services</a></li>
+                                <li><a href="pricing.html">Pricing</a></li>
+                                <li><a href="contact.html">Contact us</a></li>
+                                <li><a href="contact2.html">Contact us 2</a></li>
+                                <li><a href="404.html">404 error</a></li>
+                                <li><a href="coming-soon.html">Coming Soon</a></li>
+                            </ul>
+                        </li>                    
+                        <li class="dropdown"><a href="blog.html">众包平台 <i class="fa fa-angle-down"></i></a>
+                            <ul role="menu" class="sub-menu">
+                                <li><a href="blog.html">Blog Default</a></li>
+                                <li><a href="blogtwo.html">Timeline Blog</a></li>
+                                <li><a href="blogone.html">2 Columns + Right Sidebar</a></li>
+                                <li><a href="blogthree.html">1 Column + Left Sidebar</a></li>
+                                <li><a href="blogfour.html">Blog Masonary</a></li>
+                                <li><a href="blogdetails.html">Blog Details</a></li>
+                            </ul>
+                        </li>
+                                      
+                         <li><a href="/issue">我的</a></li> 
+       
+                        </li>
+                        <!-- 以上为别的页面 -->
+                    </ul>
+                </div>
+                <div class="search">
+                    <form role="form">
+                        <i class="fa fa-search"></i>
+                        <div class="field-toggle">
+                            <input type="text" class="search-form" autocomplete="off" placeholder="Search">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+           
+            
+        </div>
+    </header>
+    <!--/#header-->    
+
+    <section id="page-breadcrumb">
+        <div class="vertical-center sun">
+             <div class="container">
+                <div class="row">
+                    <div class="action">
+                        <div class="col-sm-12">
+                            <h1 class="title">Contact US</h1>
+                            <p>Stay close</p>
+                        </div>                        
+                    </div>
+                </div>
+            </div>
+        </div>
+   </section>
+    <!--/#action-->
+    <script language="javascript">
+function sumbit_form(){
+var gnl=confirm("发布成功！");
+if (gnl==true){
+return true;
+}else{
+return false;
+}
+}
+</script>
+
+    <section id="map-section">
+        <div class="contact-form-div">
+                    <h2>请填写你的宝贝信息吧</h2>
+                    <form action="/commit" method="post" onsubmit="return sumbit_form()" enctype="multipart/form-data">
+                                          标题:<input name="name" class="form-control-title"/><br/>
+                       <label>分类：</label>
+                       <select name="goods_type" class="form-control-select">
+                        <option value="cloth" >衣服</option>
+                         <option value="cosmetics">化妆品</option>
+                        <option value="books" >书籍</option>
+                         <option value="dailyUse">生活用品</option>
+                         <option value="sports" >运动健身</option>
+                         <option value="else" >其他</option>
+                        </select>
+                        <label>分类：</label>
+                        <select name="area" class="form-control-select">
+                         <option value="A区" >A区</option>
+                         <option value="B区" >B区</option>
+                         <option value="C区">C区</option>
+                         <option value="D区" >D区</option>
+      
+                         </select>
+             
+                        
+                        
+                                      价格:<input name="price" class="form-control-price"/><br/>
+                        
+                         
+                         
+                         
+                      <input type="text"  name="describe1"  value="描述一下你的宝贝吧" class="form-control-describe"/>
+                        <br>
+                         
+                          选择图片: <input type="file" name="com_pic" multiple="multiple" />
+                      
+                        <input type="submit" value="发布" class="issue" />
+           
+                    </form>
+                </div>
+    </section> <!--/#map-section-->        
+
+    <footer id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 text-center bottom-separator">
+                    <img src="images/home/under.png" class="img-responsive inline" alt="">
+                </div>
+               
+               
+                <div class="col-sm-12">
+                    <div class="copyright-text text-center">
+      
+                        <p>Designed by <a target="_blank" href="http://www.themeum.com">Themeum</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--/#footer-->
+
+
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+    <script type="text/javascript" src="js/gmaps.js"></script>
+    <script type="text/javascript" src="js/wow.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>   
+</body>
+</html>
+

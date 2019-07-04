@@ -1,7 +1,10 @@
 package com.example.eeprojecttrue.Entity;
 
 import javax.persistence.*;
+<<<<<<< HEAD
 import java.util.List;
+=======
+>>>>>>> ad5ddffab0f25a2405bdfcab5902afeea4d01260
 
 @Entity
 @Table(name = "Customer")
@@ -21,6 +24,7 @@ public class Customer {
 //        this.password = password;
 //    }
 
+<<<<<<< HEAD
     @OneToMany(mappedBy = "customer",cascade=CascadeType.ALL,fetch = FetchType.LAZY)//People是关系的维护端，当删除 people，会级联删除
     // address
     private List<Moment> moments;//地址
@@ -39,6 +43,9 @@ public class Customer {
     public void setMoments(List<Moment> moments) {
         this.moments = moments;
     }
+=======
+
+>>>>>>> ad5ddffab0f25a2405bdfcab5902afeea4d01260
 
     public Integer getId() {
         return id;
@@ -79,6 +86,7 @@ public class Customer {
     public void setRole(String role) {
         this.role = role;
     }
+<<<<<<< HEAD
 
 //  //****************************************
 //	public List<Goods> getLikeGoods() {
@@ -90,4 +98,6 @@ public class Customer {
 //	}
 //	//****************************************
     
+=======
+>>>>>>> ad5ddffab0f25a2405bdfcab5902afeea4d01260
 }

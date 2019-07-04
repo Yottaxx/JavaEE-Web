@@ -23,8 +23,12 @@ public class RegisterController {
         System.out.println("post");
         if(customerService.Save(customer)) {
             HttpSession session=request.getSession();
+<<<<<<< HEAD
             Customer customer1=customerService.findByEmail(customer.getEmail());
             session.setAttribute("customer",customer1);
+=======
+            session.setAttribute("customer",customer);
+>>>>>>> ad5ddffab0f25a2405bdfcab5902afeea4d01260
             return "redirect:/index";
 
         }else

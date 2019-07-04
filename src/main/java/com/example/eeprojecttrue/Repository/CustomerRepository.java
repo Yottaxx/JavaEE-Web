@@ -11,7 +11,12 @@ public interface CustomerRepository extends CrudRepository<Customer,Integer> {
     List<Customer> findByName(String name);
     Customer findByEmail(String email);
     Customer findById(int id);
+<<<<<<< HEAD
     List<Customer> findAll(); 
     
+=======
+    List<Customer> findAll();
+
+>>>>>>> ad5ddffab0f25a2405bdfcab5902afeea4d01260
 
 }

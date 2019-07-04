@@ -5,7 +5,10 @@ import com.example.eeprojecttrue.Service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+<<<<<<< HEAD
 import org.springframework.web.bind.annotation.PathVariable;
+=======
+>>>>>>> ad5ddffab0f25a2405bdfcab5902afeea4d01260
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,8 +26,12 @@ public class LoginController {
     {
         HttpSession session=request.getSession();
         if(customerService.Login(customer)) {
+<<<<<<< HEAD
             Customer customer1=customerService.findByEmail(customer.getEmail());
             session.setAttribute("customer",customer1);
+=======
+            session.setAttribute("customer",customer);
+>>>>>>> ad5ddffab0f25a2405bdfcab5902afeea4d01260
             return "redirect:/index";
         }else
             return "signup";

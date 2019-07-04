@@ -65,7 +65,11 @@ public class MainController  {
         return "portfolio";
     }
 
+<<<<<<< HEAD
     @RequestMapping(value = "/portfolio.html")
+=======
+    @RequestMapping(value = " /portfolio.html")
+>>>>>>> ad5ddffab0f25a2405bdfcab5902afeea4d01260
     public String GetPortfolioHtml() {
         return "portfolio";
     }
@@ -88,6 +92,9 @@ public class MainController  {
        model.addAttribute("post","sdfsdf");
        return "test";
     }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> ad5ddffab0f25a2405bdfcab5902afeea4d01260
 }
